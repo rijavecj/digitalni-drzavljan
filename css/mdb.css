@@ -5450,8 +5450,8 @@ a.waves-effect, a.waves-light {
 
 .card {
   border: 0;
-  -webkit-border-radius: 0.25rem;
-  border-radius: 0.25rem;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
   font-weight: 400; }
   .card[class*="border-"] {
     border: 1px solid #9e9e9e;
