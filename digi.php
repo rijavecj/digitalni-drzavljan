@@ -1,3 +1,11 @@
+
+<?php 
+include 'master_gen.php';
+showHeader();
+showNav(); 
+
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -19,8 +27,8 @@ a:hover {
 <title>E-uprava</title>
 </head>
 <body>
-    <h1 style="text-align:center">Euprava</h1>
-    <div id="drawing" style="margin:30px auto; width:1200px;"></div>
+    <h1 style="text-align:center; margin-top:150px">Euprava-digitalna potrdila</h1>
+    <div id="drawing" style="margin:50px auto; width:1200px;"></div>
 
     <script>
 ///////////////////// start flow chart ////////////////////////////////////////////////////////////
@@ -193,4 +201,6 @@ next: 'hasOAPolicy'
 }
 ]);
 </script>
-</body></html>
+</body>
+<?php showFooter() ?>  
+</html>

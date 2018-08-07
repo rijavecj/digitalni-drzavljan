@@ -558,9 +558,15 @@ function ShowLast($conn, $idt) {
 		echo "<i class='fa fa-certificate fa-2x mb-1 ' aria-hidden='true'></i> Potrebujete digitalno potrdilo.<br>";
 	}
 	
-	echo "<i class='fa fa-play fa-2x mb-1 ' aria-hidden='true'></i><a href='https://cakalnedobe.ezdrav.si/'> Začni postopek</a><br>";
+	if ($thirdLevelheme['info-link']){
+		printf("<i class='fa fa-info-circle fa-2x mb-1 ' aria-hidden='true'></i><a href='%s'> Več info</a><br>", $thirdLevelheme['info-link']);
+	}
+ 
+	if ($thirdLevelheme['Page-link']){
+		printf("<i class='fa fa-play fa-2x mb-1 ' aria-hidden='true'></i><a href='%s'> Začni postopek</a>", $thirdLevelheme['Page-link']);
+	}
 
-	echo "<i class='fa fa-info-circle fa-2x mb-1 ' aria-hidden='true'></i><a href='http://www.nijz.si/sl/podrocja-dela/cakalne-dobe'> Več info</a><br>";
+
 	if ($thirdLevelheme['video_link'] != "") {
 		$video_link = str_replace("watch?v=", "embed/", $thirdLevelheme['video_link']);
 		$video_link = str_replace("&feature=youtu.be", "", $video_link);
