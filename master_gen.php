@@ -21,6 +21,7 @@ table.gsc-search-box td {
 	margin-top: 3%;
 	width: 45%;
 	float: left;
+	margin-bottom: 5%
 }
 
 #postopek {
