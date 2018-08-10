@@ -1,6 +1,6 @@
 <?php include 'master_gen.php';
 include 'dbh.inc.php'; 
-showHeader();
+showHeader($conn);
  
 showNav();
 

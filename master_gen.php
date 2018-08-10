@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
 <style type="text/css">
-/*tukej je  za google okno dizjan*/
+/*tukej je za google okno dizjan*/
 table.gsc-search-box td {
 	width: 70%;
 	padding-left: 10px;
@@ -76,20 +76,41 @@ function showNav () {
 			</a>
 			</li>
 
-			<li><gcse:searchbox-only resultsUrl="http://localhost/dd/results.php" ></gcse:searchbox-only></li>
+			<li><gcse:searchbox-only resultsUrl="https://www.digitalni-drzavljan.si/results.php"></gcse:searchbox-only></li>
 			</ul>
 			</div>
 			</div>
 			</nav>');
 }
 // prikaži glavno na vsaki strani
-function showHeader() {
-	print_r('
+function showHeader($conn) {
+	$firstLevel = isset($_GET['id']) ? $_GET['id'] : "";
+	$secondLevel = isset($_GET['idk']) ? $_GET['idk'] : "";
+	$thirdLevel = isset($_GET['idt']) ? $_GET['idt'] : "";
+	if ($firstLevel != "" and $secondLevel == "" and $thirdLevel == "") {
+		$sql = "SELECT imePaketa FROM paketi WHERE idp='$firstLevel'";
+		$result = mysqli_query($conn,$sql);
+		$row = $result->fetch_array();
+	}
+	elseif ($secondLevel != "" and $firstLevel == "" and $thirdLevel == "") {
+		$sql = "SELECT imeKategorije FROM kategorije k, paketi p WHERE idk='$secondLevel' and k.idp = p.idp";
+		$result = mysqli_query($conn,$sql);
+		$row = $result->fetch_array();
+	}
+	elseif ($firstLevel == "" and $secondLevel != "" and $thirdLevel != "") {
+		$sql = "SELECT ime_tematike from tematike t, prenosi p WHERE t.idt = p.idt and t.idt = '$thirdLevel'";
+		$result = mysqli_query($conn, $sql);
+		$row = $result->fetch_array();
+	}
+	else {
+		$row = ["Vstopna stran - Digitalni državljan"];
+	}
+	printf('
 		<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<title>Digitalni državljan - Vstopna stran</title>
+		<title>%s</title>
 		<!-- Font Awesome -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- Bootstrap core CSS -->
@@ -100,8 +121,8 @@ function showHeader() {
 		<link href="css/style.min.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
 		<link rel="icon" href="img/favicon.png">
-		</head>');
-}
+		</head>', $row[0]);
+} 
 //  prikaži nogo na vsaki strani (posebo za prvo stran)
 function showFooter() {
 	print_r('  <!--/.Footer-->
@@ -142,28 +163,30 @@ function showbreadcrumbs($conn) {
 		$row = $result->fetch_array();
 		printf('
 			<main class="mt-5 pt-5" id="zacetek">
-				<div class="container">   
-					<hr>
-					<div class="row mb-3 wow fadeIn"> 
-						<div class="mb-2">
-							<a href="index.php">
-								<div class="card">
-									<div class="card-body">
-										<h4 class="card-title">Domov</h4>
-									</div>
-								</div> 
-							</a>  
-						</div>
-					<div class="mb-2">
-						<a href="index.php?id='.$firstLevel.'">
-							<div class="card">
-								<div class="card-body">
-									<h4 class="card-title"><b>%s</b></h4>
-								</div>
-							</div>
-					  </a>  
-					</div>   
-				</div>
+			<div class="container">   
+			<hr>
+			<div class="row mb-3 wow fadeIn">
+
+			<!--Grid column-->  
+			<div class="mb-2">
+			<a href="index.php">
+			<div class="card">
+			<div class="card-body">
+			<h4 class="card-title">Domov</h4>
+
+			</div>
+			</div> </a>  
+			</div>
+
+			<div class="mb-2">
+			<a href="index.php?id='.$firstLevel.'">
+			<div class="card">
+			<div class="card-body">
+			<h4 class="card-title"><b>%s</b></h4>
+			</div>
+			</div> </a>  
+			</div>   
+			</div>
 			</main>
 			', $row["imePaketa"]);
 	}
@@ -174,41 +197,42 @@ function showbreadcrumbs($conn) {
 		$row = $result->fetch_array();
 
 		printf('
-			
-		<main class="mt-5 pt-5" id="zacetek">
+			<main class="mt-5 pt-5" id="zacetek">
 			<div class="container">   
-				<hr>
-				<div class="row mb-3 wow fadeIn">		
-					<div class="mb-2">
-						<a href="index.php">
-							<div class="card">
-								<div class="card-body">
-									<h4 class="card-title">Domov</h4>
-								</div>
-							</div>
-						</a>  
-					</div>
-					<div class="mb-2">
-						<a href="index.php?id=%s">
-							<div class="card">
-								<div class="card-body">
-									<h4 class="card-title">%s</h4>
-								</div>
-							</div> 
-						</a>  
-					</div>
-					<div class="mb-2">
-						<a href="index.php?idk=%s">
-							<div class="card">
-								<div class="card-body">
-									<h4 class="card-title"><b>%s</b></h4>
-								</div>
-							</div>
-					  </a>  
-					</div>   
-				</div>
+			<hr>
+			<div class="row mb-3 wow fadeIn">
+
+			<!--Grid column-->  
+			<div class="mb-2">
+			<a href="index.php">
+			<div class="card">
+			<div class="card-body">
+			<h4 class="card-title">Domov</h4>
+
 			</div>
-		</main>
+			</div> </a>  
+			</div>
+
+			<div class="mb-2">
+			<a href="index.php?id=%s">
+			<div class="card">
+			<div class="card-body">
+			<h4 class="card-title">%s</h4>
+
+			</div>
+			</div> </a>  
+			</div>
+
+			<div class="mb-2">
+			<a href="index.php?idk=%s">
+			<div class="card">
+			<div class="card-body">
+			<h4 class="card-title"><b>%s</b></h4>
+			</div>
+			</div> </a>  
+			</div>   
+			</div>
+			</main>
 			',$row["idp"], $row["imePaketa"], $row["idk"] , $row["imeKategorije"]);
 	}
 	// zadnji prikaz
@@ -223,47 +247,48 @@ function showbreadcrumbs($conn) {
 
 		printf('
 			<main class="mt-5 pt-5" id="zacetek">
-				<div class="container">   
-					<hr>
-					<div class="row mb-3 wow fadeIn">
-						<div class="mb-2">
-							<a href="index.php">
-								<div class="card">
-									<div class="card-body">
-										<h4 class="card-title">Domov</h4>
-									</div>
-								</div> 
-							</a>  
-						</div>
-						<div class="mb-2">
-							<a href="index.php?id=%s">
-								<div class="card">
-									<div class="card-body">
-										<h4 class="card-title">%s</h4>
-									</div>
-								</div> 
-							</a>  
-						</div>
-						<div class="mb-2">
-							<a href="index.php?idk=%s">
-								<div class="card">
-									<div class="card-body">
-										<h4 class="card-title"><b>%s</b></h4>
-									</div>
-								</div>
-							</a> 
-						</div>
-						<div class="mb-2">
-							<a>
-								<div class="card">
-									<div class="card-body">
-										<h4 class="card-title"><b>%s</b></h4>
-									</div>
-								</div>
-							</a>  
-						</div>      
-					</div>
-				</div>
+			<div class="container">   
+			<hr>
+			<div class="row mb-3 wow fadeIn">
+
+			<!--Grid column-->  
+			<div class="mb-2">
+			<a href="index.php">
+			<div class="card">
+			<div class="card-body">
+			<h4 class="card-title">Domov</h4>
+
+			</div>
+			</div> </a>  
+			</div>
+
+			<div class="mb-2">
+			<a href="index.php?id=%s">
+			<div class="card">
+			<div class="card-body">
+			<h4 class="card-title">%s</h4>
+
+			</div>
+			</div> </a>  
+			</div>
+
+			<div class="mb-2">
+			<a href="index.php?idk=%s">
+			<div class="card">
+			<div class="card-body">
+			<h4 class="card-title"><b>%s</b></h4>
+			</div>
+			</div> </a>  
+			</div>
+			<div class="mb-2">
+			<a >
+			<div class="card">
+			<div class="card-body">
+			<h4 class="card-title"><b>%s</b></h4>
+			</div>
+			</div> </a>  
+			</div>      
+			</div>
 			</main>
 			',$row2["idp"], $row2["imePaketa"], $row2["idk"], $row2["imeKategorije"], $row["ime_tematike"]);
 	}
@@ -296,7 +321,7 @@ function mainpageview() {
 		<!--Card content-->
 		<div class="card-body">
 		<!--Title-->
-		<h4 class="card-title">MLADI<br><img src="img/ikone/paketi/mladi.png"  width="42" height="42"></h4>
+		<h4 class="card-title">MLADI<br><i class="fa fa-group" aria-hidden="true"></i></h4>
 		<!--Text-->
 		</div>
 		</div> </a>
@@ -310,7 +335,7 @@ function mainpageview() {
 		<!--Card content-->
 		<div class="card-body">
 		<!--Title-->
-		<h4 class="card-title"><nobr>BREZPOSELNI</nobr><br><img src="img/ikone/paketi/brezposleni.png"  width="42" height="42"></h4>
+		<h4 class="card-title"><nobr>BREZPOSELNI</nobr><br><i class="fa fa-group" aria-hidden="true"></i></h4>
 		<!--Text-->
 		</div>
 		</div></a>
@@ -326,7 +351,7 @@ function mainpageview() {
 		<!--Card content-->
 		<div class="card-body">
 		<!--Title-->
-		<h4 class="card-title"><nobr>UPOKOJENCI</nobr><br><img src="img/ikone/paketi/upokojenci.png"  width="42" height="42"></h4>
+		<h4 class="card-title"><nobr>UPOKOJENCI</nobr><br><i class="fa fa-group" aria-hidden="true"></i></h4>
 		<!--Text-->
 		</div>
 		</div></a>
@@ -341,7 +366,7 @@ function mainpageview() {
 		<!--Card content-->
 		<div class="card-body">
 		<!--Title-->
-		<h4 class="card-title">DELOVNO AKTIVNI<br><img src="img/ikone/paketi/delovno_aktivni.png"  width="42" height="42"></h4>
+		<h4 class="card-title">DELOVNO AKTIVNI<br><i class="fa fa-group" aria-hidden="true"></i></h4>
 		<!--Text-->
 		</div>
 		</div></a>
@@ -365,7 +390,7 @@ function mainpageview() {
 		<!--Card content-->
 		<div class="card-body">
 		<!--Title-->
-		<h4 class="card-title"><nobr>STARŠI</nobr><br><img src="img/ikone/paketi/starsi.png"  width="42" height="42"></h4>
+		<h4 class="card-title"><nobr>STARŠI</nobr><br><i class="fa fa-group" aria-hidden="true"></i></h4>
 		<!--Text-->
 		</div>
 
@@ -387,7 +412,7 @@ function mainpageview() {
 		<!--Card content-->
 		<div class="card-body">
 		<!--Title-->
-		<h4 class="card-title">SPLOŠNO<br></i><img src="img/ikone/paketi/splosno.png"  width="42" height="42"></h4>
+		<h4 class="card-title">SPLOŠNO<br><i class="fa fa-group" aria-hidden="true"></i></h4>
 		<!--Text-->
 
 		</div>
@@ -403,7 +428,7 @@ function mainpageview() {
 		</section>
 		<!--Section: Main features & Quick Start-->
 
-	
+		<hr>
 		</div>
 
 		</main>');
@@ -468,7 +493,6 @@ function getTheme($conn, $idp) {
 	foreach($rows as $row)
 	{
 		printf('
-		  <div class="container">
 			<div class="col-lg-12 col-md-12 mb-12">
 
 			<!--Card-->
@@ -485,14 +509,14 @@ function getTheme($conn, $idp) {
 			</div>
 			</div></a>
 			<!--/.Card-->
-			</div>
+
 			</div>', $row['idk'], $row['imeKategorije'], showIcon($row['icon']));
 	}
 }
 // funkcija za prikaz ikone/slike za določeno storitve/paket/kategorijo ...
 function showIcon($icon)  {	
 	if (substr($icon, 0, 5) === "data:") {
-		$string = '<img id="kategorija-ikona" src="%s" width="42" height="42" alt="PKP" />';
+		$string = '<img src="%s" alt="PKP" />';
 		$a = sprintf($string, $icon);
 		return $a;
 	}
@@ -513,7 +537,6 @@ function showSecondLevel($conn, $idk) {
 	foreach($rows as $row)
 	{
 		printf('
-		  <div class="container">
 			<div class="col-lg-12 col-md-12 mb-12">
 
 			<!--Card-->
@@ -525,7 +548,7 @@ function showSecondLevel($conn, $idk) {
 			<!--Card content-->
 			<div class="card-body">
 			<!--Title-->
-			<h4 class="card-title">%s%s</h4>
+			<h4 class="card-title"><nobr>%s</nobr>%s</h4>
 
 			<!--Text-->
 
@@ -533,7 +556,7 @@ function showSecondLevel($conn, $idk) {
 
 			</div></a>
 			<!--/.Card-->
-      </div>	
+
 			</div>',$row['tematika'], $row['katogorija'], $row['ime_tematike'], showIcon($row['icon']));
 	}
 }
@@ -544,33 +567,27 @@ function ShowLast($conn, $idt) {
 	$sql = "SELECT * FROM tematike WHERE idt='$idt'";
 	$result = mysqli_query($conn,$sql);
 	$thirdLevelheme = $result->fetch_array(MYSQLI_ASSOC);
-  
+
 	$opis = $thirdLevelheme['opis'];  
-	echo "<div class='container'><p>'".$opis."'</p>";
+	echo "<p>'".$opis."'</p>";
 
 	$thirdLevelelefon = $thirdLevelheme['tel'];
 	if ($thirdLevelelefon != '0') {
-		echo "<div><i class='fa fa-phone-square fa-2x mb-1 ' aria-hidden='true'></i> $thirdLevelelefon <br>";
+		echo "<div><i class='fa fa-phone-square fa-2x mb-1 ' aria-hidden='true'></i> $thirdLevelelefon ";
 	}
 	$potrdilo = $thirdLevelheme['digitalno_potrdilo'];
 	if ($potrdilo == '1') {
 
 		echo "<i class='fa fa-certificate fa-2x mb-1 ' aria-hidden='true'></i> Potrebujete digitalno potrdilo.<br>";
 	}
-	
-	if ($thirdLevelheme['info-link']){
-		printf("<i class='fa fa-info-circle fa-2x mb-1 ' aria-hidden='true'></i><a href='%s'> Več info</a><br>", $thirdLevelheme['info-link']);
-	}
- 
-	if ($thirdLevelheme['Page-link']){
-		printf("<i class='fa fa-play fa-2x mb-1 ' aria-hidden='true'></i><a href='%s'> Začni postopek</a>", $thirdLevelheme['Page-link']);
-	}
-
-
-	if ($thirdLevelheme['video_link'] != "") {
-		$video_link = str_replace("watch?v=", "embed/", $thirdLevelheme['video_link']);
-		$video_link = str_replace("&feature=youtu.be", "", $video_link);
-		printf("<iframe width='650' height='550' src='%s'</iframe></div></div>", $video_link);
-	}
+	if ($thirdLevelheme['Page-link'] != "") { 
+	printf("<i class='fa fa-info-circle fa-2x mb-1 ' aria-hidden='true'></i><a href='%s'> Začni postopek</a>", $thirdLevelheme['Page-link']);
+}
+echo "<i class='fa fa-info-circle fa-2x mb-1 ' aria-hidden='true'></i><a href='http://www.nijz.si/sl/podrocja-dela/cakalne-dobe'> Več info</a>";
+if ($thirdLevelheme['video_link'] != "") {
+	$video_link = str_replace("watch?v=", "embed/", $thirdLevelheme['video_link']);
+	$video_link = str_replace("&feature=youtu.be", "", $video_link);
+	printf("<iframe width='650' height='550' src='%s'</iframe></div>", $video_link);
+}
 }
 ?>
