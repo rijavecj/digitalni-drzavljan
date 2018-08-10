@@ -2,12 +2,11 @@
 <html>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
-
 <?php 
 
 include 'master_gen.php';
 include 'dbh.inc.php'; 
-showHeader();
+showHeader($conn);
 
 showNav(); 
 $f = isset($_GET['id']) ? $_GET['id'] : "";
@@ -37,7 +36,7 @@ $t = isset($_GET['idt']) ? $_GET['idt'] : "";
 <?php showFooter() ?>
 
 <!--  prikazuje drugi nivo oz. Pakete lastnega generiranja -->
-<?php elseif ($s != "" and $f == "" and $t == ""):  ?>
+<?php elseif ($f == "" and $s != "" and $t == ""):  ?>
 
 	<?php echo showbreadcrumbs($conn); ?>
 	<hr>
@@ -60,8 +59,8 @@ $t = isset($_GET['idt']) ? $_GET['idt'] : "";
 </div>
 <?php showFooter() ?>
 
-<!--  prikazuje zandji nivo lastnega generijranaj -->
-<?php elseif ($t != "" and $f == "" and $s != ""):  ?>
+<!--  prikazuje zandji nivo lastnega generiranja -->
+<?php elseif ($f == "" and $s != "" and $t != ""):  ?>
 
 	<?php echo showbreadcrumbs($conn); ?>
 	<hr>
@@ -84,15 +83,11 @@ $t = isset($_GET['idt']) ? $_GET['idt'] : "";
 <?php showFooter() ?>  
 
 <?php else: ?>
-
 	<?php echo mainpageview()?>
-
 	<!--/.Call to action-->
 	<?php showFooter() ?>
 	<!--/.Footer-->
-
 	<?php scripts() ?>
-
 <?php endif ?>
 
 </body>

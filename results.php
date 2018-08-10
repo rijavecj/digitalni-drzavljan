@@ -1,10 +1,9 @@
-<?php include 'master_gen.php';
+<?php 
+include 'master_gen.php';
 include 'dbh.inc.php'; 
 showHeader($conn);
- 
 showNav();
-
-?> 
+?>
 
 <div style="padding-top: 80px">
 <script>

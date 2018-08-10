@@ -1,11 +1,57 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
 <style type="text/css">
-/*tukej je za google okno dizjan*/
+/* tukej je za google okno dizjan */
 table.gsc-search-box td {
 	width: 70%;
 	padding-left: 10px;
 }
+
+#text {
+	float: left;
+}
+
+#opis {
+	width:45%;
+	padding-left: 30px; 
+	text-align:justify;
+	margin-bottom: -30px;
+}
+#znacke {
+	margin-top: 3%;
+	width: 45%;
+	float: left;
+}
+
+#postopek {
+	margin-top: -42px;
+	width: 50%;
+	float:right;
+	padding-right:40%;
+	display:block;
+	z-index: 1;
+	margin-bottom: 200px;
+	min-width: 500px;
+	position: relative;
+	font-weight: bold;
+}
+.in {
+	margin-right: 20px;
+	width: 20px;
+}
+
+#move {
+	display: block;
+	width: 80%;
+	float: right;
+	text-align: left;
+	padding-top:1px;
+}
+
+#move2 {
+	display: block
+	width: 50%;
+	}		
 </style>
 
 <?php
@@ -132,7 +178,6 @@ function showFooter() {
 		<p class="text-white"><center>Projekt so omogočili:</center></p>
 		<!-- Content -->
 		<div class="card-body text-white text-center py-1 px-1 my-">
-
 
 		<p> 
 		<img src="img/logo_footer.png" class="img-fluid" alt="">
@@ -408,7 +453,6 @@ function mainpageview() {
 
 		<!--Card image-->
 
-
 		<!--Card content-->
 		<div class="card-body">
 		<!--Title-->
@@ -479,7 +523,6 @@ function scripts() {
 							</script>
 							');
 }
-
 
 // tukaj je prvih 6 glavnih prikazov na prvi strani: Mladi, Brezposelni, Upokojenci, Delovno Aktivni, Starši, Splošno
 // prikaz prvega nivoja
@@ -566,28 +609,33 @@ function ShowLast($conn, $idt) {
 
 	$sql = "SELECT * FROM tematike WHERE idt='$idt'";
 	$result = mysqli_query($conn,$sql);
-	$thirdLevelheme = $result->fetch_array(MYSQLI_ASSOC);
+	$info = $result->fetch_array(MYSQLI_ASSOC);
 
-	$opis = $thirdLevelheme['opis'];  
-	echo "<p>'".$opis."'</p>";
+	echo "<div style='margin-bottom:40px;'><h1>". $info['ime_tematike'] . "</h1></div>";
 
-	$thirdLevelelefon = $thirdLevelheme['tel'];
-	if ($thirdLevelelefon != '0') {
-		echo "<div><i class='fa fa-phone-square fa-2x mb-1 ' aria-hidden='true'></i> $thirdLevelelefon ";
+	$opis = $info['opis'];  
+	echo "<div id='opis'>".$opis."'</div><br>";
+	echo "<div id='znacke'>";
+	$tel = $info['tel'];
+	if ($tel != '0') {
+		printf("<p><span id='move2'><i class='fa fa-phone-square fa-2x mb-1 in' aria-hidden='true'></i></span><span><a id='move' href='tel:%s'> %s</a></span></p>",$tel, $tel);
 	}
-	$potrdilo = $thirdLevelheme['digitalno_potrdilo'];
+	$potrdilo = $info['digitalno_potrdilo'];
 	if ($potrdilo == '1') {
 
-		echo "<i class='fa fa-certificate fa-2x mb-1 ' aria-hidden='true'></i> Potrebujete digitalno potrdilo.<br>";
+		echo "<p><span id='move2'><i class='fa fa-certificate fa-2x mb-1 in' aria-hidden='true'></i></span> Potrebujete digitalno potrdilo.</p>";
 	}
-	if ($thirdLevelheme['Page-link'] != "") { 
-	printf("<i class='fa fa-info-circle fa-2x mb-1 ' aria-hidden='true'></i><a href='%s'> Začni postopek</a>", $thirdLevelheme['Page-link']);
-}
-echo "<i class='fa fa-info-circle fa-2x mb-1 ' aria-hidden='true'></i><a href='http://www.nijz.si/sl/podrocja-dela/cakalne-dobe'> Več info</a>";
-if ($thirdLevelheme['video_link'] != "") {
-	$video_link = str_replace("watch?v=", "embed/", $thirdLevelheme['video_link']);
-	$video_link = str_replace("&feature=youtu.be", "", $video_link);
-	printf("<iframe width='650' height='550' src='%s'</iframe></div>", $video_link);
-}
+	if ($info['Page-link'] != "") { 
+		printf("<p><span id='move2'><i class='fa fa-info-circle fa-2x mb-1 in' aria-hidden='true'></i></span> <a id='move' href='%s'> Začni postopek</a></p>", $info['Page-link']);
+	}
+	if ($info['Page-link']){
+		printf("<p><span id='move2'><i class='fa fa-play fa-2x mb-1 in' aria-hidden='true'></i></span><a  id='move'href='%s'> Več informacij</a></p>", $info['Page-link']);
+	}
+	echo "</div>";
+	if ($info['video_link'] != "") {
+		$video_link = str_replace("watch?v=", "embed/", $info['video_link']);
+		$video_link = str_replace("&feature=youtu.be", "", $video_link);
+		printf("<div id='postopek'><span id='text'>Postopek:</span><iframe width='650' height='550' src='%s'</iframe></div>", $video_link);
+	}
 }
 ?>
