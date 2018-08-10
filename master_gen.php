@@ -51,7 +51,7 @@ table.gsc-search-box td {
 #move2 {
 	display: block
 	width: 50%;
-	}		
+}		
 </style>
 
 <?php
@@ -366,7 +366,7 @@ function mainpageview() {
 		<!--Card content-->
 		<div class="card-body">
 		<!--Title-->
-		<h4 class="card-title">MLADI<br><i class="fa fa-group" aria-hidden="true"></i></h4>
+		<h4 class="card-title">MLADI<br><img src="img/ikone/paketi/mladi.png"  width="42" height="42"></h4>
 		<!--Text-->
 		</div>
 		</div> </a>
@@ -380,7 +380,7 @@ function mainpageview() {
 		<!--Card content-->
 		<div class="card-body">
 		<!--Title-->
-		<h4 class="card-title"><nobr>BREZPOSELNI</nobr><br><i class="fa fa-group" aria-hidden="true"></i></h4>
+		<h4 class="card-title"><nobr>BREZPOSELNI</nobr><br><img src="img/ikone/paketi/brezposleni.png"  width="42" height="42"></h4>
 		<!--Text-->
 		</div>
 		</div></a>
@@ -396,7 +396,7 @@ function mainpageview() {
 		<!--Card content-->
 		<div class="card-body">
 		<!--Title-->
-		<h4 class="card-title"><nobr>UPOKOJENCI</nobr><br><i class="fa fa-group" aria-hidden="true"></i></h4>
+		<h4 class="card-title"><nobr>UPOKOJENCI</nobr><br><img src="img/ikone/paketi/upokojenci.png"  width="42" height="42"></h4>
 		<!--Text-->
 		</div>
 		</div></a>
@@ -411,7 +411,7 @@ function mainpageview() {
 		<!--Card content-->
 		<div class="card-body">
 		<!--Title-->
-		<h4 class="card-title">DELOVNO AKTIVNI<br><i class="fa fa-group" aria-hidden="true"></i></h4>
+		<h4 class="card-title">DELOVNO AKTIVNI<br><img src="img/ikone/paketi/delovno_aktivni.png"  width="42" height="42"></h4>
 		<!--Text-->
 		</div>
 		</div></a>
@@ -435,7 +435,7 @@ function mainpageview() {
 		<!--Card content-->
 		<div class="card-body">
 		<!--Title-->
-		<h4 class="card-title"><nobr>STARŠI</nobr><br><i class="fa fa-group" aria-hidden="true"></i></h4>
+		<h4 class="card-title"><nobr>STARŠI</nobr><br><img src="img/ikone/paketi/starsi.png"  width="42" height="42"></h4>
 		<!--Text-->
 		</div>
 
@@ -456,7 +456,7 @@ function mainpageview() {
 		<!--Card content-->
 		<div class="card-body">
 		<!--Title-->
-		<h4 class="card-title">SPLOŠNO<br><i class="fa fa-group" aria-hidden="true"></i></h4>
+		<h4 class="card-title">SPLOŠNO<br></i><img src="img/ikone/paketi/splosno.png"  width="42" height="42"></h4>
 		<!--Text-->
 
 		</div>
@@ -536,30 +536,28 @@ function getTheme($conn, $idp) {
 	foreach($rows as $row)
 	{
 		printf('
+		  <div class="container">
 			<div class="col-lg-12 col-md-12 mb-12">
-
 			<!--Card-->
 			<a href="index.php?idk=%s">
 			<div class="card">
-
 			<!--Card image-->
-
 			<!--Card content-->
 			<div class="card-body">
 			<!--Title-->
-			<h4 class="card-title"><nobr>%s</nobr>%s</h4> 
+			<h4 class="card-title"><nobr>%s </nobr>%s</h4> 
 			<!--Text-->
 			</div>
 			</div></a>
 			<!--/.Card-->
-
+			</div>
 			</div>', $row['idk'], $row['imeKategorije'], showIcon($row['icon']));
 	}
 }
 // funkcija za prikaz ikone/slike za določeno storitve/paket/kategorijo ...
 function showIcon($icon)  {	
 	if (substr($icon, 0, 5) === "data:") {
-		$string = '<img src="%s" alt="PKP" />';
+		$string = '<img id="kategorija-ikona" src="%s" width="42" height="42" alt="PKP" />';
 		$a = sprintf($string, $icon);
 		return $a;
 	}
@@ -614,7 +612,7 @@ function ShowLast($conn, $idt) {
 	echo "<div style='margin-bottom:40px;'><h1>". $info['ime_tematike'] . "</h1></div>";
 
 	$opis = $info['opis'];  
-	echo "<div id='opis'>".$opis."'</div><br>";
+	echo "<div id='opis'>".$opis."</div><br>";
 	echo "<div id='znacke'>";
 	$tel = $info['tel'];
 	if ($tel != '0') {
@@ -623,7 +621,7 @@ function ShowLast($conn, $idt) {
 	$potrdilo = $info['digitalno_potrdilo'];
 	if ($potrdilo == '1') {
 
-		echo "<p><span id='move2'><i class='fa fa-certificate fa-2x mb-1 in' aria-hidden='true'></i></span> Potrebujete digitalno potrdilo.</p>";
+		printf("<p><span id='move2'><i class='fa fa-certificate fa-2x mb-1 in' aria-hidden='true'></i></span><a id='move' href='https://www.sigen-ca.si/'> Potrebujete digitalno potrdilo</a></p>");
 	}
 	if ($info['Page-link'] != "") { 
 		printf("<p><span id='move2'><i class='fa fa-info-circle fa-2x mb-1 in' aria-hidden='true'></i></span> <a id='move' href='%s'> Začni postopek</a></p>", $info['Page-link']);
