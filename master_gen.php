@@ -123,7 +123,7 @@ function showNav () {
 			</a>
 			</li>
 
-			<li><gcse:searchbox-only resultsUrl="https://www.digitalni-drzavljan.si/results.php"></gcse:searchbox-only></li>
+			<li><gcse:searchbox-only resultsUrl="/results.php"></gcse:searchbox-only></li>
 			</ul>
 			</div>
 			</div>
