@@ -153,8 +153,11 @@ function showHeader($conn) {
 		$row = ["Vstopna stran - Digitalni državljan"];
 	}
 	printf('
+		<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:fb="http://ogp.me/ns/fb#">s
 		<head>
 		<meta charset="utf-8">
+		<meta property="og:image" content="img/logo.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<title>%s</title>
@@ -244,7 +247,7 @@ function showbreadcrumbs($conn) {
 
 		printf('
 			<main class="mt-5 pt-5" id="zacetek">
-			<div class="container">   
+			<div class="container">    
 			<hr>
 			<div class="row mb-3 wow fadeIn">
 
@@ -254,7 +257,6 @@ function showbreadcrumbs($conn) {
 			<div class="card">
 			<div class="card-body">
 			<h4 class="card-title">Domov</h4>
-
 			</div>
 			</div> </a>  
 			</div>
@@ -264,7 +266,6 @@ function showbreadcrumbs($conn) {
 			<div class="card">
 			<div class="card-body">
 			<h4 class="card-title">%s</h4>
-
 			</div>
 			</div> </a>  
 			</div>
@@ -276,8 +277,11 @@ function showbreadcrumbs($conn) {
 			<h4 class="card-title"><b>%s</b></h4>
 			</div>
 			</div> </a>  
-			</div>   
+			</div>  
+
 			</div>
+			</div>
+			
 			</main>
 			',$row["idp"], $row["imePaketa"], $row["idk"] , $row["imeKategorije"]);
 	}
@@ -303,7 +307,6 @@ function showbreadcrumbs($conn) {
 			<div class="card">
 			<div class="card-body">
 			<h4 class="card-title">Domov</h4>
-
 			</div>
 			</div> </a>  
 			</div>
@@ -313,7 +316,6 @@ function showbreadcrumbs($conn) {
 			<div class="card">
 			<div class="card-body">
 			<h4 class="card-title">%s</h4>
-
 			</div>
 			</div> </a>  
 			</div>
@@ -326,14 +328,16 @@ function showbreadcrumbs($conn) {
 			</div>
 			</div> </a>  
 			</div>
+
 			<div class="mb-2">
-			<a >
+			<a>
 			<div class="card">
 			<div class="card-body">
 			<h4 class="card-title"><b>%s</b></h4>
 			</div>
 			</div> </a>  
 			</div>      
+			</div>
 			</div>
 			</main>
 			',$row2["idp"], $row2["imePaketa"], $row2["idk"], $row2["imeKategorije"], $row["ime_tematike"]);
@@ -579,6 +583,7 @@ function showSecondLevel($conn, $idk) {
 	foreach($rows as $row)
 	{
 		printf('
+		  <div class="container">
 			<div class="col-lg-12 col-md-12 mb-12">
 
 			<!--Card-->
@@ -598,7 +603,7 @@ function showSecondLevel($conn, $idk) {
 
 			</div></a>
 			<!--/.Card-->
-
+      </div>
 			</div>',$row['tematika'], $row['katogorija'], $row['ime_tematike'], showIcon($row['icon']));
 	}
 }
