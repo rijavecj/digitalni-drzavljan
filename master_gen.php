@@ -50,9 +50,10 @@ table.gsc-search-box td {
 }
 
 #move2 {
-	display: block
 	width: 50%;
-}		
+}
+
+	
 </style>
 
 <?php
@@ -153,8 +154,15 @@ function showHeader($conn) {
 		$row = ["Vstopna stran - Digitalni državljan"];
 	}
 	printf('
+		<div class="fullscreen-bg">
+		<video loop muted autoplay poster="img/videoframe.jpg" class="fullscreen-bg__video">
+
+		<source src="bgvideo.mp4" type="video/mp4">
+
+		</video>
+		</div>
 		<html xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:fb="http://ogp.me/ns/fb#">s
+		xmlns:fb="http://ogp.me/ns/fb#">
 		<head>
 		<meta charset="utf-8">
 		<meta property="og:image" content="img/logo.png" />
@@ -345,7 +353,6 @@ function showbreadcrumbs($conn) {
 }
 // osnovni prikaz glavne strani
 function mainpageview() {
-	$paketi = [""];
 	printf('<div class="fullscreen-bg">
 		<video loop muted autoplay poster="img/videoframe.jpg" class="fullscreen-bg__video">
 
@@ -541,7 +548,7 @@ function getTheme($conn, $idp) {
 	foreach($rows as $row)
 	{
 		printf('
-		  <div class="container">
+			<div class="container">
 			<div class="col-lg-12 col-md-12 mb-12">
 			<!--Card-->
 			<a href="index.php?idk=%s">
@@ -583,7 +590,7 @@ function showSecondLevel($conn, $idk) {
 	foreach($rows as $row)
 	{
 		printf('
-		  <div class="container">
+			<div class="container">
 			<div class="col-lg-12 col-md-12 mb-12">
 
 			<!--Card-->
@@ -603,7 +610,7 @@ function showSecondLevel($conn, $idk) {
 
 			</div></a>
 			<!--/.Card-->
-      </div>
+			</div>
 			</div>',$row['tematika'], $row['katogorija'], $row['ime_tematike'], showIcon($row['icon']));
 	}
 }
@@ -614,6 +621,11 @@ function ShowLast($conn, $idt) {
 	$sql = "SELECT * FROM tematike WHERE idt='$idt'";
 	$result = mysqli_query($conn,$sql);
 	$info = $result->fetch_array(MYSQLI_ASSOC);
+	
+	// mogoče če bo barvno ozadje
+	// echo "<style>body {color:black; font-weight: bold;}</style>";
+	
+	echo "<style>.fullscreen-bg{display:none}</style>";
 
 	echo "<div style='margin-bottom:40px;'><h1>". $info['ime_tematike'] . "</h1></div>";
 
@@ -622,7 +634,7 @@ function ShowLast($conn, $idt) {
 	echo "<div id='znacke'>";
 	$tel = $info['tel'];
 	if ($tel != '0') {
-		printf("<p><span id='move2'><i class='fa fa-phone-square fa-2x mb-1 in' aria-hidden='true'></i></span><span><a id='move' href='tel:%s'> %s</a></span></p>",$tel, $tel);
+		printf("<p><span id='move2'><i class='fa fa-phone-square fa-2x mb-1 in' aria-hidden='true'></i></span><span id='move'><a href='tel:%s'> %s</a></span></p>",$tel, $tel);
 	}
 	$potrdilo = $info['digitalno_potrdilo'];
 	if ($potrdilo == '1') {
@@ -632,14 +644,15 @@ function ShowLast($conn, $idt) {
 	if ($info['Page-link'] != "") { 
 		printf("<p><span id='move2'><i class='fa fa-info-circle fa-2x mb-1 in' aria-hidden='true'></i></span> <a id='move' href='%s'> Začni postopek</a></p>", $info['Page-link']);
 	}
-	if ($info['Page-link']){
-		printf("<p><span id='move2'><i class='fa fa-play fa-2x mb-1 in' aria-hidden='true'></i></span><a  id='move'href='%s'> Več informacij</a></p>", $info['Page-link']);
+	if ($info['info-link']){
+		printf("<p><span id='move2'><i class='fa fa-play fa-2x mb-1 in' aria-hidden='true'></i></span><a  id='move'href='%s'> Več informacij</a></p>", $info['info-link']);
 	}
 	echo "</div>";
 	if ($info['video_link'] != "") {
 		$video_link = str_replace("watch?v=", "embed/", $info['video_link']);
 		$video_link = str_replace("&feature=youtu.be", "", $video_link);
-		printf("<div id='postopek'><span id='text'>Postopek:</span><iframe width='650' height='550' src='%s'</iframe></div>", $video_link);
+		printf("
+			<div id='postopek'><span id='text'>Postopek:</span><iframe width='650' height='550' src='%s'frameborder='0' allowfullscreen></iframe></div>", $video_link);
 	}
 }
 ?>

@@ -5,6 +5,7 @@ showHeader($conn);
 showNav(); 
 ?>
 
+
 <!doctype html>
 <html>
 <head>
@@ -21,20 +22,24 @@ showNav();
 	a:hover {
 		text-decoration:underline;
 	}
+	body {
+		color:black;
+		font-weight: bold;
+	}
 </style>
 
 <title>E-uprava</title>
 </head>
 <body>
-	<h1 style="text-align:center; margin-top:150px">Euprava-digitalna potrdila</h1>
-	<div id="drawing" style="margin:50px auto; width:1200px;"></div>
+	<h1 style="text-align:center; margin-top:150px">E-uprava - digitalna potrdila</h1>
+	<div id="drawing" style="margin:50px auto; width:1200px; height:1200px;"></div>
 
 	<script>
-		flowSVG.draw(SVG('drawing').size(1500, 1500));
+		flowSVG.draw(SVG('drawing').size(1200, 1200));
 		flowSVG.config({
 			interactive: true,
 			showButtons: true,
-			connectorLength: 60,
+			connectorLength: 80,
 			scrollto: true
 		});
 		flowSVG.shapes(
