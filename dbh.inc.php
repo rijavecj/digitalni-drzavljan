@@ -1,7 +1,7 @@
 <?php
 
 
-$conn = mysqli_connect('localhost', 'admin', '', 'test');
+$conn = mysqli_connect('localhost', 'digitalni', 'drzavljan', 'test');
 mysqli_set_charset($conn,"utf8");
 
 if (!$conn){
