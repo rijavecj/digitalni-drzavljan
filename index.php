@@ -68,7 +68,7 @@ $t = isset($_GET['idt']) ? $_GET['idt'] : "";
 		<!--Grid row-->
 		<div class="row mb-3 wow fadeIn">       
 
-			<div class="col-lg-12 col-md-12 mb-12">
+			<div class="col-lg-12 col-md-12 mb-12 white">
 
 				<?php ShowLast($conn, $t); ?>
 			</div>
@@ -82,7 +82,7 @@ $t = isset($_GET['idt']) ? $_GET['idt'] : "";
 
 <?php else: ?>
 
-	<?php echo mainpageview()?>
+	<?php echo mainpageview($conn)?>
 
 	<!--/.Call to action-->
 	<?php showFooter() ?>

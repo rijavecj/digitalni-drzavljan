@@ -31,7 +31,6 @@ table.gsc-search-box td {
 	padding-right:40%;
 	display:block;
 	z-index: 1;
-	margin-bottom: 200px;
 	min-width: 500px;
 	position: relative;
 	font-weight: bold;
@@ -53,7 +52,11 @@ table.gsc-search-box td {
 	width: 50%;
 }
 
-	
+.white {
+	background-color: white;
+}
+
+
 </style>
 
 <?php
@@ -82,7 +85,7 @@ function showNav () {
 			<div class="container">
 			<!-- Brand -->
 			<a class="navbar-item" href="index.php" >
-			<img src="img/logo.png" width="25%">
+			<img src="img/logo.png" width="150px">
 			</a>
 			<!-- Collapse -->
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -93,8 +96,12 @@ function showNav () {
 			<!-- Links -->
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<!-- Left -->
-			<ul class="navbar-nav mr-auto"></ul>
+			<ul class="navbar-nav mr-auto">
+			<li><h1 style="color:black; text-align:center; Font-weight:bold;"><pid="naslov">Digitalni državljan za digitalno Slovenijo</h1></li>
+			</ul>
 			<!-- Right -->
+			</a>
+			</li> 
 			<ul class="navbar-nav nav-flex-icons">
 			<li class="nav-item">
 			<a href="https://www.facebook.com/Digitalslovenija/" class="nav-link" target="_blank">
@@ -111,12 +118,6 @@ function showNav () {
 			</a>
 			</li>
 			</li>
-			<li class="nav-item">
-			<a href="digi.php" class="nav-link border border-light rounded"
-			target="_blank">
-			<i>digi</i>
-			</a>
-			</li> 
 			<li class="nav-item">
 			<a href="oprojektu.php" class="nav-link border border-light rounded"
 			target="_blank">
@@ -183,27 +184,17 @@ function showHeader($conn) {
 } 
 //  prikaži nogo na vsaki strani (posebo za prvo stran)
 function showFooter() {
-	print_r('  <!--/.Footer-->
-		<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+	print_r('
+		<footer class="navbar page-footer text-center font-small style="padding-top:200px;">
 
-		<!--Call to action-->
-		<p class="text-white"><center>Projekt so omogočili:</center></p>
-		<!-- Content -->
-		<div class="card-body text-white text-center py-1 px-1 my-">
+		<div class="card-body text-white text-center" style="width=100%">
 
-		<p> 
-		<img src="img/logo_footer.png" class="img-fluid" alt="">
-		</p>
+		<img src="img/logo_footer.png" class="img-fluid" alt="Investitorji-Javni Štipendijski razvojni invaldiski sklad SVN">
 
 		</div>
-		<!--/.Call to action-->
-
-		<hr class="my-4">
 
 		<!--Copyright-->
-		<div class="footer-copyright py-3">
-		PKP projekt @ 2018
-		</div>
+		<div style="display:block; position:relative; padding-left:43%">PKP projekt - Digitalni državljan @ 2018</div>
 		<!--/.Copyright-->
 
 		</footer>');
@@ -352,8 +343,12 @@ function showbreadcrumbs($conn) {
 	}
 }
 // osnovni prikaz glavne strani
-function mainpageview() {
-	printf('<div class="fullscreen-bg">
+function mainpageview($conn) {
+	$sql = "SELECT * FROM paketi";
+	$result = mysqli_query($conn,$sql);
+
+	printf('
+		<div class="fullscreen-bg">
 		<video loop muted autoplay poster="img/videoframe.jpg" class="fullscreen-bg__video">
 
 		<source src="bgvideo.mp4" type="video/mp4">
@@ -362,132 +357,100 @@ function mainpageview() {
 		</div>
 		<!--Main layout-->
 		<main class="mt-5 pt-5" >
-		<div class="container">   
-		<h1 style="color:black; text-align:center; Font-weight:bold;padding-top:50px;"><pid="naslov">Digitalni državljan za digitalno Slovenijo!</p></h1>
-		<br>
-		<!--Section: Cards-->
-		<section class="text-center">
-		<!--Grid row-->
-		<div class="row mb-3 wow fadeIn">
-		<!--Grid column-->
-		<!--Grid column-->
-		<div class="col-lg-6 col-md-6 mb-6">
-		<!--Card--><a href="index.php?id=1">
-		<div class="card">
-		<!--Card image-->
-		<!--Card content-->
-		<div class="card-body">
-		<!--Title-->
-		<h4 class="card-title">MLADI<br><img src="img/ikone/paketi/mladi.png"  width="42" height="42"></h4>
-		<!--Text-->
-		</div>
-		</div> </a>
-		<!--/.Card-->
-		</div>
-		<!--Grid column-->
-		<div class="col-lg-6 col-md-6 mb-6">
-		<!--Card--><a href="index.php?id=2">
-		<div class="card">
-		<!--Card image-->
-		<!--Card content-->
-		<div class="card-body">
-		<!--Title-->
-		<h4 class="card-title"><nobr>BREZPOSELNI</nobr><br><img src="img/ikone/paketi/brezposleni.png"  width="42" height="42"></h4>
-		<!--Text-->
-		</div>
-		</div></a>
-		<!--/.Card-->
-		</div> 
-		</div>
-		<div class="row mb-3 wow fadeIn">
-		<div class="col-lg-6 col-md-6 mb-6">
-		<!--Card-->
-		<!--Card--><a href="index.php?id=3">
-		<div class="card">
-		<!--Card image-->
-		<!--Card content-->
-		<div class="card-body">
-		<!--Title-->
-		<h4 class="card-title"><nobr>UPOKOJENCI</nobr><br><img src="img/ikone/paketi/upokojenci.png"  width="42" height="42"></h4>
-		<!--Text-->
-		</div>
-		</div></a>
-		<!--/.Card-->
-		<!--/.Card-->
-		</div>
-		<div class="col-lg-6 col-md-6 mb-6">
-		<!--Card-->
-		<!--Card--><a href="index.php?id=4">
-		<div class="card">
-		<!--Card image-->
-		<!--Card content-->
-		<div class="card-body">
-		<!--Title-->
-		<h4 class="card-title">DELOVNO AKTIVNI<br><img src="img/ikone/paketi/delovno_aktivni.png"  width="42" height="42"></h4>
-		<!--Text-->
-		</div>
-		</div></a>
-		<!--/.Card-->
-		<!--/.Card-->
-		</div>
-		<!--Grid column-->
+		<div class="container">');
+	while($row = $result->fetch_array())
+	{
+		$rows[] = $row;
+	}
 
-		<!--Grid column-->
-		</div>
-		<!--Grid row-->
-		<div class="row mb-3 wow fadeIn">
-		<div class="col-lg-6 col-md-6 mb-6">
+	for ($i=0; $i < count($rows); $i= $i+2) {
+		if (count($rows) % 2 == 1 and $i == count($rows) -1) {
+			if ($rows[$i]["idp"] == 7) {
+				printf('<!--Section: Cards-->
+					<section class="text-center">
+					<!--Grid row-->
+					<div class="row mb-3 wow fadeIn">
+					<!--Grid column-->
+					<!--Grid column-->
+					<div class="col-lg-6 col-md-6 mb-6">
+					<!--Card--><a href="%s">
+					<div class="card">
+					<!--Card image-->
+					<!--Card content-->
+					<div class="card-body">
+					<!--Title-->
+					<h4 class="card-title">%s<br>%s</h4>
+					<!--Text-->
+					</div>
+					</div> </a>
+					<!--/.Card-->',"digi.php", $rows[$i]['imePaketa'], showIcon($rows[$i]['icon']));
+			} else {
+				
+				printf('<!--Section: Cards-->
+					<section class="text-center">
+					<!--Grid row-->
+					<div class="row mb-3 wow fadeIn">
+					<!--Grid column-->
+					<!--Grid column-->
+					<div class="col-lg-6 col-md-6 mb-6">
+					<!--Card--><a href="index.php?id=%s">
+					<div class="card">
+					<!--Card image-->
+					<!--Card content-->
+					<div class="card-body">
+					<!--Title-->
+					<h4 class="card-title">%s<br>%s</h4>
+					<!--Text-->
+					</div>
+					</div> </a>
+					<!--/.Card-->',$rows[$i]["idp"], $rows[$i]['imePaketa'], showIcon($rows[$i]['icon']));
+			}
+		}
+		else {
+			printf('
+				<!--Section: Cards-->
+				<section class="text-center">
+				<!--Grid row-->
+				<div class="row mb-3 wow fadeIn">
+				<!--Grid column-->
+				<!--Grid column-->
+				<div class="col-lg-6 col-md-6 mb-6">
+				<!--Card--><a href="index.php?id=%s">
+				<div class="card">
+				<!--Card image-->
+				<!--Card content-->
+				<div class="card-body">
+				<!--Title-->
+				<h4 class="card-title">%s<br>%s</h4>
+				<!--Text-->
+				</div>
+				</div> </a>
+				<!--/.Card-->
+				</div>
+				<!--Grid column-->
+				<div class="col-lg-6 col-md-6 mb-6">
+				<!--Card--><a href="index.php?id=%s">
+				<div class="card">
+				<!--Card image-->
+				<!--Card content-->
+				<div class="card-body">
+				<!--Title-->
+				<h4 class="card-title"><nobr>%s</nobr><br>%s</h4>
+				<!--Text-->
+				</div>
+				</div></a>
+				<!--/.Card-->
+				</div> 
+				</div>
+				',  $rows[$i]["idp"], $rows[$i]['imePaketa'], showIcon($rows[$i]['icon']),$rows[$i+1]["idp"], $rows[$i+1]['imePaketa'], showIcon($rows[$i+1]['icon']));
+		}
+	}
+	echo '
+	</section>
 
-		<!--Card-->
-		<!--Card--><a href="index.php?id=5">
-		<div class="card">
+	</div>
 
-		<!--Card image-->
-
-		<!--Card content-->
-		<div class="card-body">
-		<!--Title-->
-		<h4 class="card-title"><nobr>STARŠI</nobr><br><img src="img/ikone/paketi/starsi.png"  width="42" height="42"></h4>
-		<!--Text-->
-		</div>
-
-		</div></a>
-		<!--/.Card-->
-		<!--/.Card-->
-
-		</div>
-
-		<div class="col-lg-6 col-md-6 mb-6">
-
-		<!--Card-->
-		<!--Card--><a href="index.php?id=6">
-		<div class="card">
-
-		<!--Card image-->
-
-		<!--Card content-->
-		<div class="card-body">
-		<!--Title-->
-		<h4 class="card-title">SPLOŠNO<br></i><img src="img/ikone/paketi/splosno.png"  width="42" height="42"></h4>
-		<!--Text-->
-
-		</div>
-
-		</div></a>
-		<!--/.Card-->
-		<!--/.Card-->
-		</div>
-		<!--Grid column-->
-		<!--Grid column-->
-		</div>
-
-		</section>
-		<!--Section: Main features & Quick Start-->
-
-		<hr>
-		</div>
-
-		</main>');
+	</main>';
 }
 // uporaba JS knjižnic
 function scripts() {
@@ -622,11 +585,7 @@ function ShowLast($conn, $idt) {
 	$result = mysqli_query($conn,$sql);
 	$info = $result->fetch_array(MYSQLI_ASSOC);
 	
-	// mogoče če bo barvno ozadje
-	// echo "<style>body {color:black; font-weight: bold;}</style>";
-	
-	echo "<style>.fullscreen-bg{display:none}</style>";
-
+	echo "<div style='background-color:white'>";
 	echo "<div style='margin-bottom:40px;'><h1>". $info['ime_tematike'] . "</h1></div>";
 
 	$opis = $info['opis'];  
@@ -642,17 +601,17 @@ function ShowLast($conn, $idt) {
 		printf("<p><span id='move2'><i class='fa fa-certificate fa-2x mb-1 in' aria-hidden='true'></i></span><a id='move' href='https://www.sigen-ca.si/'> Potrebujete digitalno potrdilo</a></p>");
 	}
 	if ($info['Page-link'] != "") { 
-		printf("<p><span id='move2'><i class='fa fa-info-circle fa-2x mb-1 in' aria-hidden='true'></i></span> <a id='move' href='%s'> Začni postopek</a></p>", $info['Page-link']);
+		printf("<p><span id='move2'><i class='fa fa-info-circle fa-2x mb-1 in' aria-hidden='true'></i></span> <a id='move' href='%s'> Več informacij</a></p>", $info['Page-link']);
 	}
 	if ($info['info-link']){
-		printf("<p><span id='move2'><i class='fa fa-play fa-2x mb-1 in' aria-hidden='true'></i></span><a  id='move'href='%s'> Več informacij</a></p>", $info['info-link']);
+		printf("<p><span id='move2'><i class='fa fa-play fa-2x mb-1 in' aria-hidden='true'></i></span><a  id='move'href='%s'> Začni postopek</a></p>", $info['info-link']);
 	}
 	echo "</div>";
 	if ($info['video_link'] != "") {
 		$video_link = str_replace("watch?v=", "embed/", $info['video_link']);
 		$video_link = str_replace("&feature=youtu.be", "", $video_link);
 		printf("
-			<div id='postopek'><span id='text'>Postopek:</span><iframe width='650' height='550' src='%s'frameborder='0' allowfullscreen></iframe></div>", $video_link);
+			<div id='postopek'><span id='text'>Postopek:</span><iframe width='550' height='400' src='%s'frameborder='0' allowfullscreen></iframe></div>", $video_link);
 	}
 }
 ?>

@@ -31,13 +31,15 @@ showNav();
 <title>E-uprava</title>
 </head>
 <body>
-	<h1 style="text-align:center; margin-top:150px">E-uprava - digitalna potrdila</h1>
-	<div id="drawing" style="margin:50px auto; width:1200px; height:1200px;"></div>
+	<div style="margin-top:150px;">
+	<div id="drawing" style="width: auto; margin-left: 42%;"></div>
+	<div style="margin:300px width: 100%"></div>
+
 
 	<script>
-		flowSVG.draw(SVG('drawing').size(1200, 1200));
+		flowSVG.draw(SVG('drawing').size(1000, 1000));
 		flowSVG.config({
-			interactive: true,
+			interactive: false,
 			showButtons: true,
 			connectorLength: 80,
 			scrollto: true
@@ -75,8 +77,8 @@ showNav();
 				],
 				links: [
 				{
-					text: 'Klik', 
-					url: 'https://sicas.gov.si/IdP-RM-Front/register/start.htm', 
+					text: 'Povezava', 
+					url: 'https://e-uprava.gov.si/pomoc-kontakt/pomoc-pri-uporabi/sms-pass.html', 
 					target: '_blank'
 				}
 				],
@@ -118,7 +120,7 @@ showNav();
 				],
 				links: [
 				{
-					text: 'Klik ', 
+					text: 'Povezava ', 
 					url: 'https://www.sigen-ca.si/pridobitev_fizicni.php', 
 					target: '_blank'
 				}
@@ -139,45 +141,20 @@ showNav();
 				type: 'process',
 				text: [
 				'V SI-PASS se',
-				'prijavite z digitalnim potrdilom',
-				'in ga nato registrirajte'
+				'prijavite z digitalnim',
+				'potrdilom in',
+				'ga nato registrirajte.'
 				],
 				links: [
 				{
-					text: 'Klik', 
+					text: 'Povezava', 
 					url: 'https://sicas.gov.si/IdP-RM-Front/register/start.htm', 
 					target: '_blank'
 				}
 				],
-				next: 'depositInWrap'
+				next: 'canComply2'
 			},
-			{
-				label: 'depositInWrap',
-				type: 'decision',
-				text: [
-				'Želite preveriti',
-				'registrirano digitalno',
-				'potrdilo?'
-				],
-				yes: 'registerto',
-				no: 'canComply2'
-			},
-			{
-				label: 'registerto',
-				type: 'finish',
-				text: [
-				'Urejanje registriranih načinov',
-				'prijave (Kvalificirano potrdilo',
-				'izdano v Sloveniji)'
-				],
-				links: [
-				{
-					text: 'Klik', 
-					url: 'https://sicas.gov.si/bl-user-web/app/id-methods', 
-					target: '_blank'
-				}
-				]
-			},
+
 			{
 				label: 'canComply2',
 				type: 'finish',
@@ -195,7 +172,7 @@ showNav();
 				],
 				links: [
 				{
-					text: 'Klik', 
+					text: 'Povezava', 
 					url: 'https://sicas.gov.si/IdP-RM-Front/register/start.htm', 
 					target: '_blank'
 				}
