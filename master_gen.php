@@ -56,6 +56,26 @@ table.gsc-search-box td {
 	background-color: white;
 }
 
+.card{
+	margin-bottom: 20px;
+}
+
+.vsebina{
+	margin-top: 70px;
+}
+
+.onas{
+	display: none;
+	@media (min-width: 768px){
+		display: initial;
+	}
+
+}
+
+.change-color{	
+	color: #cc0000;
+}
+
 
 </style>
 
@@ -97,7 +117,7 @@ function showNav () {
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<!-- Left -->
 			<ul class="navbar-nav mr-auto">
-			<li><h1 style="color:black; text-align:center; Font-weight:bold;"><pid="naslov">Digitalni državljan za digitalno Slovenijo</h1></li>
+			<li><h1 style="color:black; text-align:center; Font-weight:bold;"><pid="naslov"><span class="change-color">Digitalni državljan za digitalno Slovenijo<span></h1></li>
 			</ul>
 			<!-- Right -->
 			</a>
@@ -121,7 +141,7 @@ function showNav () {
 			<li class="nav-item">
 			<a href="oprojektu.php" class="nav-link border border-light rounded"
 			target="_blank">
-			<i class="fa fa-group" aria-hidden="true"></i> O nas
+			<i class="fa fa-group" aria-hidden="true"></i><span class="onas">O nas</span>
 			</a>
 			</li>
 
@@ -168,6 +188,7 @@ function showHeader($conn) {
 		<meta charset="utf-8">
 		<meta property="og:image" content="img/logo.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<title>%s</title>
 		<!-- Font Awesome -->
@@ -211,7 +232,7 @@ function showbreadcrumbs($conn) {
 		$row = $result->fetch_array();
 		printf('
 			<main class="mt-5 pt-5" id="zacetek">
-			<div class="container">   
+			<div class="container vsebina">   
 			<hr>
 			<div class="row mb-3 wow fadeIn">
 
@@ -246,7 +267,7 @@ function showbreadcrumbs($conn) {
 
 		printf('
 			<main class="mt-5 pt-5" id="zacetek">
-			<div class="container">    
+			<div class="container vsebina">    
 			<hr>
 			<div class="row mb-3 wow fadeIn">
 
@@ -296,7 +317,7 @@ function showbreadcrumbs($conn) {
 
 		printf('
 			<main class="mt-5 pt-5" id="zacetek">
-			<div class="container">   
+			<div class="container vsebina">   
 			<hr>
 			<div class="row mb-3 wow fadeIn">
 
@@ -351,13 +372,15 @@ function mainpageview($conn) {
 		<div class="fullscreen-bg">
 		<video loop muted autoplay poster="img/videoframe.jpg" class="fullscreen-bg__video">
 
-		<source src="bgvideo.mp4" type="video/mp4">
+		<source src="bgvideo1.mp4" type="video/mp4">
 
 		</video>
 		</div>
 		<!--Main layout-->
 		<main class="mt-5 pt-5" >
-		<div class="container">');
+		<div class="container vsebina">
+		<section class="text-center">
+		<div class="row mb-3 wow fadeIn">');
 	while($row = $result->fetch_array())
 	{
 		$rows[] = $row;
@@ -367,12 +390,11 @@ function mainpageview($conn) {
 		if (count($rows) % 2 == 1 and $i == count($rows) -1) {
 			if ($rows[$i]["idp"] == 7) {
 				printf('<!--Section: Cards-->
-					<section class="text-center">
+					
 					<!--Grid row-->
-					<div class="row mb-3 wow fadeIn">
-					<!--Grid column-->
-					<!--Grid column-->
-					<div class="col-lg-6 col-md-6 mb-6">
+					<!--<div class="row mb-3 wow fadeIn">-->
+				
+					<div class="col-lg-6 col-md-6">
 					<!--Card--><a href="%s">
 					<div class="card">
 					<!--Card image-->
@@ -383,16 +405,17 @@ function mainpageview($conn) {
 					<!--Text-->
 					</div>
 					</div> </a>
+					</div>
 					<!--/.Card-->',"digi.php", $rows[$i]['imePaketa'], showIcon($rows[$i]['icon']));
 			} else {
 				
 				printf('<!--Section: Cards-->
-					<section class="text-center">
+					
 					<!--Grid row-->
-					<div class="row mb-3 wow fadeIn">
+					<!--<div class="row mb-3 wow fadeIn">-->
+					
 					<!--Grid column-->
-					<!--Grid column-->
-					<div class="col-lg-6 col-md-6 mb-6">
+					<div class="col-lg-6 col-md-6">
 					<!--Card--><a href="index.php?id=%s">
 					<div class="card">
 					<!--Card image-->
@@ -403,21 +426,20 @@ function mainpageview($conn) {
 					<!--Text-->
 					</div>
 					</div> </a>
+					</div>
 					<!--/.Card-->',$rows[$i]["idp"], $rows[$i]['imePaketa'], showIcon($rows[$i]['icon']));
 			}
 		}
 		else {
 			printf('
 				<!--Section: Cards-->
-				<section class="text-center">
+			
 				<!--Grid row-->
-				<div class="row mb-3 wow fadeIn">
-				<!--Grid column-->
-				<!--Grid column-->
-				<div class="col-lg-6 col-md-6 mb-6">
+				<!--<div class="row mb-3 wow fadeIn">-->
+				
+				<div class="col-lg-6 col-md-6">
 				<!--Card--><a href="index.php?id=%s">
 				<div class="card">
-				<!--Card image-->
 				<!--Card content-->
 				<div class="card-body">
 				<!--Title-->
@@ -428,7 +450,7 @@ function mainpageview($conn) {
 				<!--/.Card-->
 				</div>
 				<!--Grid column-->
-				<div class="col-lg-6 col-md-6 mb-6">
+				<div class="col-lg-6 col-md-6">
 				<!--Card--><a href="index.php?id=%s">
 				<div class="card">
 				<!--Card image-->
@@ -441,7 +463,7 @@ function mainpageview($conn) {
 				</div></a>
 				<!--/.Card-->
 				</div> 
-				</div>
+				
 				',  $rows[$i]["idp"], $rows[$i]['imePaketa'], showIcon($rows[$i]['icon']),$rows[$i+1]["idp"], $rows[$i+1]['imePaketa'], showIcon($rows[$i+1]['icon']));
 		}
 	}
@@ -585,8 +607,8 @@ function ShowLast($conn, $idt) {
 	$result = mysqli_query($conn,$sql);
 	$info = $result->fetch_array(MYSQLI_ASSOC);
 	
-	echo "<div style='background-color:white'>";
-	echo "<div style='margin-bottom:40px;'><h1>". $info['ime_tematike'] . "</h1></div>";
+	echo "<div style='background-color:white; padding-left: 10px;'>";
+	echo "<div style='margin-bottom:40px; margin-top: 30px;'><h1>". $info['ime_tematike'] . "</h1></div>";
 
 	$opis = $info['opis'];  
 	echo "<div id='opis'>".$opis."</div><br>";
