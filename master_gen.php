@@ -60,17 +60,19 @@ table.gsc-search-box td {
 	margin-bottom: 20px;
 }
 
+.card:hover{
+	color: #cc0000;
+}
+
 .vsebina{
 	margin-top: 70px;
 }
 
 .onas{
 	display: none;
-	@media (min-width: 768px){
-		display: initial;
-	}
-
 }
+
+
 
 .change-color{	
 	color: #cc0000;
