@@ -1,5 +1,7 @@
 /* Required height of parents of the Half Page Carousel for proper displaying carousel itself */
-
+section{
+  min-height: 40%;
+}
 
 a {
   color: black;
@@ -71,6 +73,11 @@ section{
 .fa{
   color: black;
   font-size: 32px;
+}
+
+
+a.nav-link:hover{
+  color: #cc0000;
 }
 
 .footer-tekst{

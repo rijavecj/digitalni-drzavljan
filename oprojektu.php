@@ -35,6 +35,10 @@
  -webkit-border-radius: 100px;
  -moz-border-radius: 100px;
 }
+.card:hover{
+	color: #cc0000;
+}
+
 </style>
 </head>
   <!-- Navbar -->
@@ -276,66 +280,27 @@
    
 
 
-     <hr>
+    
     </div>
-    <div class="container">
-
-        <!--Section: Jumbotron-->
-        <section class="wow fadeIn" >
-            <p><center>Projekt so omogočili:</center></p>
-            <!-- Content -->
-            <div class="card-body text-white text-center py-1 px-1 my-">
-
-               
-                <p> 
-                    <img src="img/logo_footer.png" class="img-fluid" alt="">
-                </p>
-                
-            </div>
-            <!-- Content -->
-        </section>
-    </div>
+ 
        
   </main>
   <!--Main layout-->
 
   <!--Footer-->
-  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
-     
-      
-    <!--Call to action-->
+  <footer class="page-footer text-center font-small style="padding-top:200px;">
 
-    <!--/.Call to action-->
+<div class="card-body text-white text-center" style="width=100%">
 
-    <hr class="my-4">
+<img src="img/logo_footer.png" class="img-fluid" alt="Investitorji-Javni Štipendijski razvojni invaldiski sklad SVN">
 
-    <!-- Social icons -->
-    <div class="pb-4">
-      <a href="https://www.facebook.com/Digitalslovenija/" target="_blank">
-        <i class="fa fa-facebook mr-4"></i>
-      </a>
+</div>
 
-      <a href="https://www.instagram.com/digitalni.drzavljan/" target="_blank">
-        <i class="fa fa-instagram mr-4"></i>
-      </a>
+<!--Copyright-->
+<div class="footer-tekst">Po kreativni poti do znanja (PKP) - 2018</div>	
+<!--/.Copyright-->
 
-      
-      <a href="https://www.youtube.com/channel/UChuqzkHhmLao0rXqClIefbw" target="_blank">
-        <i class="fa fa-youtube mr-4"></i>
-      </a>
-
-     
-   
-    </div>
-    <!-- Social icons -->
-
-    <!--Copyright-->
-    <div class="footer-copyright py-3">
-      PKP projekt @ 2018
-    </div>
-    <!--/.Copyright-->
-
-  </footer>
+</footer>
   <!--/.Footer-->
 
   <!-- SCRIPTS -->

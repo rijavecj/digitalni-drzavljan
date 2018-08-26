@@ -67,6 +67,7 @@ table.gsc-search-box td {
 .vsebina{
 	margin-top: -50px;
 	margin-bottom: -30px;
+	margin-left:5px;
 }
 
 
@@ -89,6 +90,20 @@ table.gsc-search-box td {
 }
 
 
+#droptine-div{
+	font-size:16px;
+	font-weight: 600;
+}
+
+@media only screen and (min-width: 768px){
+	#droptine-div{
+		font-size: 24px;
+	}
+}
+
+.droptine:hover{
+	color: #cc0000;
+}
 
 }
 
@@ -100,72 +115,70 @@ include 'dbh.inc.php';
 # navigacijski meni
 function showNav () {
 	print_r(
-		'
-		<script>
-		(function() {
-			var cx = "004088570275756489852:m_tuee_l8zq";
-			var gcse = document.createElement("script");
+		'  		<!-- JQuery -->
+				
+				<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+				<!-- Bootstrap tooltips -->
+				<script type="text/javascript" src="js/popper.min.js"></script>
+				<!-- Bootstrap core JavaScript -->
+				<script type="text/javascript" src="js/bootstrap.min.js"></script>
+				<!-- MDB core JavaScript -->
+				<script type="text/javascript" src="js/mdb.min.js"></script>
 
-			gcse.type = "text/javascript";
-			gcse.async = true;
-			gcse.src = "https://cse.google.com/cse.js?cx=" + cx;
-			var s = document.getElementsByTagName("script")[0];
-			s.parentNode.insertBefore(gcse, s);
-			})();
-			window.onload = function(){
-				document.getElementById("gsc-i-id1").placeholder = "";
-			};
-			</script>
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+	
+		
 			<nav class="navbar navbar-expand-lg navbar-light scrolling-navbar">
-			<div class="container">
-			<!-- Brand -->
-			<a class="navbar-item" href="index.php" >
-			<img src="img/logo.png" width="150px">
-			</a>
-			<!-- Collapse -->
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-			</button>
+				<div class="container">
+				<!-- Brand -->
+				<a class="navbar-item" href="index.php" >
+				<img src="img/logo.png" width="150px">
+				</a>
+				<!-- Collapse -->
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+				</button>
 
-			<!-- Links -->
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<!-- Left -->
-			<ul class="navbar-nav mr-auto">
-			<li><h1 id="banner-tekst" style="color:black; Font-weight:bold;"><pid="naslov"><span class="change-color">DIGITALNI DRŽAVLJAN<br><span class="za-ds">za digitalno Slovenijo</span></span></h1></li>
-			</ul>
-			<!-- Right -->
-			</a>
-			</li> 
-			<ul class="navbar-nav nav-flex-icons">
-			<li class="nav-item">
-			<a href="https://www.facebook.com/Digitalslovenija/" class="nav-link" target="_blank">
-			<i class="fa fa-facebook-square mr-3"></i>
-			</a>
-			<li class="nav-item">
-			<a href="https://www.instagram.com/digitalni.drzavljan/" class="nav-link" target="_blank">
-			<i class="fa fa-instagram mr-3"></i>
-			</a>
-			</li>
-			<li class="nav-item">
-			<a href="https://www.youtube.com/channel/UC_LICUebZN4bvCM8tfAPUdg" class="nav-link" target="_blank">
-			<i class="fa fa-youtube mr-3"></i>
-			</a>
-			</li>
-			</li>
-			<li class="nav-item">
-			<a href="oprojektu.php" class="nav-link border border-dark rounded"
-			target="_blank">
-			<nobr><i class="fa fa-group" aria-hidden="true"></i><span class="onas">O nas</nobr></span>
-			</a>
-			</li>
+				<!-- Links -->
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<!-- Left -->
+				<ul class="navbar-nav mr-auto">
+				<li><h1 id="banner-tekst" style="color:black; Font-weight:bold;"><pid="naslov"><span class="change-color">DIGITALNI DRŽAVLJAN<br><span class="za-ds">za digitalno Slovenijo</span></span></h1></li>
+				</ul>
+				<!-- Right -->
+				</a>
+				</li> 
+				<ul class="navbar-nav nav-flex-icons">
+				<li class="nav-item">
+				<a href="https://www.facebook.com/Digitalslovenija/" class="nav-link" target="_blank">
+				<i class="fa fa-facebook-square mr-3"></i>
+				</a>
+				<li class="nav-item">
+				<a href="https://www.instagram.com/digitalni.drzavljan/" class="nav-link" target="_blank">
+				<i class="fa fa-instagram mr-3"></i>
+				</a>
+				</li>
+				<li class="nav-item">
+				<a href="https://www.youtube.com/channel/UC_LICUebZN4bvCM8tfAPUdg" class="nav-link" target="_blank">
+				<i class="fa fa-youtube mr-3"></i>
+				</a>
+				</li>
+				</li>
+				<li class="nav-item">
+				<a href="oprojektu.php" class="nav-link border border-dark rounded"
+				target="_blank">
+				<nobr><i class="fa fa-group" aria-hidden="true"></i><span class="onas">O nas</nobr></span>
+				</a>
+				</li>
 
-			<!--<li><gcse:searchbox-only resultsUrl="/results.php"></gcse:searchbox-only></li>-->
-			</ul>
-			</div>
-			</div>
-			</nav>');
+								<!--<li><gcse:searchbox-only resultsUrl="/results.php"></gcse:searchbox-only></li>-->
+				</ul>
+				</div>
+				</div>
+			</nav>
+			');
 }
 // prikaži glavno na vsaki strani
 function showHeader($conn) {
@@ -247,32 +260,34 @@ function showbreadcrumbs($conn) {
 		$result = mysqli_query($conn,$sql);
 		$row = $result->fetch_array();
 		printf('
-			<main class="mt-5 pt-5" id="zacetek">
+			<main class="mt-3 pt-3 ml-3" id="zacetek">
+			<div id="droptine-div">
 			<div class="container vsebina">   
 			<hr>
 			<div class="row mb-3 wow fadeIn">
 
 			<!--Grid column-->  
 			<div class="mb-2">
-			<a href="index.php">
-			<div class="card">
-			<div class="card-body">
-			<h4 class="card-title">Domov</h4>
+			<a class="droptine" href="index.php">
+			
+			<p  style="margin-right: 3px;">Domov </p>
 
+			 </a>  
 			</div>
-			</div> </a>  
-			</div>
-
+			<span>/ </span>
 			<div class="mb-2">
-			<a href="index.php?id='.$firstLevel.'">
-			<div class="card">
-			<div class="card-body">
-			<h4 class="card-title"><b>%s</b></h4>
+			<a class="droptine" href="index.php?id='.$firstLevel.'">
+			
+			<p  style="margin-left: 3px;"> <b>%s</b></p>
+			 </a>  
+			</div> 
+			
 			</div>
-			</div> </a>  
-			</div>   
+			
 			</div>
+			
 			</main>
+			<hr>  	
 			', $row["imePaketa"]);
 	}
 	// drugi prikaz
@@ -282,42 +297,37 @@ function showbreadcrumbs($conn) {
 		$row = $result->fetch_array();
 
 		printf('
-			<main class="mt-5 pt-5" id="zacetek">
+			<main class="mt-3 pt-3 ml-3" id="zacetek">
+			<div id="droptine-div">
 			<div class="container vsebina">    
 			<hr>
 			<div class="row mb-3 wow fadeIn">
 
 			<!--Grid column-->  
 			<div class="mb-2">
-			<a href="index.php">
-			<div class="card">
-			<div class="card-body">
-			<h4 class="card-title">Domov</h4>
+			<a class="droptine" href="index.php" >
+			
+			<p  style="margin-right: 3px;">Domov</p>
+			 </a>  
 			</div>
-			</div> </a>  
-			</div>
-
+			<span>/ </span>
 			<div class="mb-2">
-			<a href="index.php?id=%s">
-			<div class="card">
-			<div class="card-body">
-			<h4 class="card-title">%s</h4>
+			<a class="droptine" href="index.php?id=%s">
+		
+			<p style="margin-left: 3px; margin-right: 3px;">%s</p>
+		 </a>  
 			</div>
-			</div> </a>  
-			</div>
-
+			<span >/ </span>
 			<div class="mb-2">
-			<a href="index.php?idk=%s">
-			<div class="card">
-			<div class="card-body">
-			<h4 class="card-title"><b>%s</b></h4>
-			</div>
-			</div> </a>  
+			<a class="droptine" href="index.php?idk=%s">
+			
+			<p style="margin-left: 3px;"><b>%s</b></p>
+			 </a>  
 			</div>  
 
 			</div>
 			</div>
-			
+			</div>
 			</main>
 			',$row["idp"], $row["imePaketa"], $row["idk"] , $row["imeKategorije"]);
 	}
@@ -332,47 +342,41 @@ function showbreadcrumbs($conn) {
 		$row2 = $result2->fetch_array();
 
 		printf('
-			<main class="mt-5 pt-5" id="zacetek">
+			<main class="mt-3 pt-3 ml-3" id="zacetek">
+			<div id="droptine-div">
 			<div class="container vsebina">   
 			<hr>
 			<div class="row mb-3 wow fadeIn">
 
 			<!--Grid column-->  
 			<div class="mb-2">
-			<a href="index.php">
-			<div class="card">
-			<div class="card-body">
-			<h4 class="card-title">Domov</h4>
+			<a  class="droptine" href="index.php">
+			
+			<p  style="margin-right: 3px;">Domov</p>
+			 </a>  
 			</div>
-			</div> </a>  
-			</div>
-
+			<span >/ </span>
 			<div class="mb-2">
-			<a href="index.php?id=%s">
-			<div class="card">
-			<div class="card-body">
-			<h4 class="card-title">%s</h4>
+			<a class="droptine" href="index.php?id=%s">
+			
+			<p style="margin-left: 3px; margin-right: 3px;">%s</p>
+			 </a>  
 			</div>
-			</div> </a>  
-			</div>
-
+			<span >/ </span>
 			<div class="mb-2">
-			<a href="index.php?idk=%s">
-			<div class="card">
-			<div class="card-body">
-			<h4 class="card-title"><b>%s</b></h4>
+			<a class="droptine" href="index.php?idk=%s">
+		
+			<p style="margin-left: 3px; margin-right: 3px;">%s</p>
+			 </a>  
 			</div>
-			</div> </a>  
-			</div>
-
+			<span >/ </span>
 			<div class="mb-2">
 			<a>
-			<div class="card">
-			<div class="card-body">
-			<h4 class="card-title"><b>%s</b></h4>
-			</div>
-			</div> </a>  
+			
+			<p style="margin-left: 3px;"><b>%s</b></p>
+			 </a>  
 			</div>      
+			</div>
 			</div>
 			</div>
 			</main>
@@ -473,7 +477,7 @@ function mainpageview($conn) {
 				<!--Card content-->
 				<div class="card-body">
 				<!--Title-->
-				<h4 class="card-title"><nobr>%s</nobr><br>%s</h4>
+				<h4 class="card-title">%s<br>%s</h4>
 				<!--Text-->
 				</div>
 				</div></a>
@@ -494,15 +498,7 @@ function mainpageview($conn) {
 function scripts() {
 	print_r('<!-- SCRIPTS -->
 		<!-- JQuery -->
-		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		<!-- Bootstrap tooltips -->
-		<script type="text/javascript" src="js/popper.min.js"></script>
-		<!-- Bootstrap core JavaScript -->
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<!-- MDB core JavaScript -->
-		<script type="text/javascript" src="js/mdb.min.js"></script>
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
 
 		<!-- Initializations -->
 		<script type="text/javascript">
@@ -558,7 +554,7 @@ function getTheme($conn, $idp) {
 			<!--Card content-->
 			<div class="card-body">
 			<!--Title-->
-			<h4 class="card-title"><nobr>%s </nobr>%s</h4> 
+			<h4 class="card-title">%s %s</h4> 
 			<!--Text-->
 			</div>
 			</div></a>
@@ -570,7 +566,7 @@ function getTheme($conn, $idp) {
 // funkcija za prikaz ikone/slike za določeno storitve/paket/kategorijo ...
 function showIcon($icon)  {	
 	if (substr($icon, 0, 5) === "data:") {
-		$string = '<img id="kategorija-ikona" src="%s" width="58" height="58" alt="PKP" />';
+		$string = '<img id="kategorija-ikona" src="%s" width="42" height="42" alt="PKP" />';
 		$a = sprintf($string, $icon);
 		return $a;
 	}
@@ -603,7 +599,7 @@ function showSecondLevel($conn, $idk) {
 			<!--Card content-->
 			<div class="card-body">
 			<!--Title-->
-			<h4 class="card-title"><nobr>%s</nobr>%s</h4>
+			<h4 class="card-title">%s %s</h4>
 
 			<!--Text-->
 
