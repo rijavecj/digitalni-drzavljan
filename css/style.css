@@ -1,8 +1,6 @@
 /* Required height of parents of the Half Page Carousel for proper displaying carousel itself */
 
 
-
-
 a {
   color: black;
 }
@@ -25,13 +23,18 @@ section{
 
 
 
-footer .page-footer{
-	position: relative;
+.page-footer{
+  position: relative;
+  background-color: #fff;
 }
 
-.card-title{
-	margin-bottom: 0;
+
+.card .card-body h4{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  margin-bottom: 0;
 }
+
 
 
 
@@ -65,6 +68,22 @@ footer .page-footer{
     transform: translate(-50%, -50%);
 }
 
+.fa{
+  color: black;
+  font-size: 32px;
+}
+
+.footer-tekst{
+  color: black;
+  display: block;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+.nav-flex-icons{
+  justify-content: space-evenly;
+}
+
 @media (max-width: 767px) {
   .fullscreen-bg {
       background: url('img/videoframe.jpg') center center / cover no-repeat;
@@ -83,7 +102,19 @@ body,
   height: 100%; }
 
 
+#banner-tekst{
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
   
+  
+  /*font-family: "Open Sans";*/
+}
+
+@media only screen and (min-width: 991px){
+  #banner-tekst{
+    text-align: left;
+  }
+}
 
 @media (max-width: 740px) {
   .full-page-intro {
@@ -105,19 +136,19 @@ body,
 
 /* Navbar animation */
 .navbar {
-  background-color: rgba(0, 0, 0, 0.2); }
+  background-color: rgba(255, 255, 255, 0.6); }
 
 .top-nav-collapse {
-  background-color: #1C2331; }
+  background-color: rgba(255, 255, 255, 0.9); }
 
 /* Adding color to the Navbar on mobile */
 @media only screen and (max-width: 768px) {
   .navbar {
-    background-color: #1C2331; } }
+    background-color: rgba(255, 255, 255, 0.6); } } 
 
 /* Footer color for sake of consistency with Navbar */
 
-  
+
  
 
 

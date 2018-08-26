@@ -65,17 +65,31 @@ table.gsc-search-box td {
 }
 
 .vsebina{
-	margin-top: 70px;
+	margin-top: -50px;
+	margin-bottom: -30px;
 }
+
 
 .onas{
-	display: none;
+	color: black;
+	font-size: 19px;
+	margin-left: 8px;
+	margin-bottom: 5px;
+	font-weight: bolder;
+}
+
+.change-color{	
+	color: #000;
+	font-size: 	
+}
+
+.za-ds{
+	font-style: italic;
+  font-weight: 100;
 }
 
 
 
-.change-color{	
-	color: #cc0000;
 }
 
 
@@ -103,7 +117,7 @@ function showNav () {
 			};
 			</script>
 
-			<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+			<nav class="navbar navbar-expand-lg navbar-light scrolling-navbar">
 			<div class="container">
 			<!-- Brand -->
 			<a class="navbar-item" href="index.php" >
@@ -119,7 +133,7 @@ function showNav () {
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<!-- Left -->
 			<ul class="navbar-nav mr-auto">
-			<li><h1 style="color:black; text-align:center; Font-weight:bold;"><pid="naslov"><span class="change-color">Digitalni državljan za digitalno Slovenijo<span></h1></li>
+			<li><h1 id="banner-tekst" style="color:black; Font-weight:bold;"><pid="naslov"><span class="change-color">DIGITALNI DRŽAVLJAN<br><span class="za-ds">za digitalno Slovenijo</span></span></h1></li>
 			</ul>
 			<!-- Right -->
 			</a>
@@ -127,7 +141,7 @@ function showNav () {
 			<ul class="navbar-nav nav-flex-icons">
 			<li class="nav-item">
 			<a href="https://www.facebook.com/Digitalslovenija/" class="nav-link" target="_blank">
-			<i class="fa fa-facebook mr-3"></i>
+			<i class="fa fa-facebook-square mr-3"></i>
 			</a>
 			<li class="nav-item">
 			<a href="https://www.instagram.com/digitalni.drzavljan/" class="nav-link" target="_blank">
@@ -141,13 +155,13 @@ function showNav () {
 			</li>
 			</li>
 			<li class="nav-item">
-			<a href="oprojektu.php" class="nav-link border border-light rounded"
+			<a href="oprojektu.php" class="nav-link border border-dark rounded"
 			target="_blank">
-			<i class="fa fa-group" aria-hidden="true"></i><span class="onas">O nas</span>
+			<nobr><i class="fa fa-group" aria-hidden="true"></i><span class="onas">O nas</nobr></span>
 			</a>
 			</li>
 
-			<li><gcse:searchbox-only resultsUrl="/results.php"></gcse:searchbox-only></li>
+			<!--<li><gcse:searchbox-only resultsUrl="/results.php"></gcse:searchbox-only></li>-->
 			</ul>
 			</div>
 			</div>
@@ -180,7 +194,7 @@ function showHeader($conn) {
 		<div class="fullscreen-bg">
 		<video loop muted autoplay poster="img/videoframe.jpg" class="fullscreen-bg__video">
 
-		<source src="bgvideo.mp4" type="video/mp4">
+		<source src="bgvideo1.mp4" type="video/mp4">
 
 		</video>
 		</div>
@@ -208,7 +222,7 @@ function showHeader($conn) {
 //  prikaži nogo na vsaki strani (posebo za prvo stran)
 function showFooter() {
 	print_r('
-		<footer class="navbar page-footer text-center font-small style="padding-top:200px;">
+		<footer class="page-footer text-center font-small style="padding-top:200px;">
 
 		<div class="card-body text-white text-center" style="width=100%">
 
@@ -217,7 +231,7 @@ function showFooter() {
 		</div>
 
 		<!--Copyright-->
-		<div style="display:block; position:relative; padding-left:43%">PKP projekt - Digitalni državljan @ 2018</div>
+		<div class="footer-tekst">Po kreativni poti do znanja (PKP) - 2018</div>	
 		<!--/.Copyright-->
 
 		</footer>');
@@ -556,7 +570,7 @@ function getTheme($conn, $idp) {
 // funkcija za prikaz ikone/slike za določeno storitve/paket/kategorijo ...
 function showIcon($icon)  {	
 	if (substr($icon, 0, 5) === "data:") {
-		$string = '<img id="kategorija-ikona" src="%s" width="42" height="42" alt="PKP" />';
+		$string = '<img id="kategorija-ikona" src="%s" width="58" height="58" alt="PKP" />';
 		$a = sprintf($string, $icon);
 		return $a;
 	}
