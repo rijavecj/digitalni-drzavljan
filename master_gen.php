@@ -161,6 +161,10 @@ table.gsc-search-box td {
 	color: 	#00BFFF;
 }
 
+.fa.fa-facebook-square:hover,.fa.fa-instagram:hover,.fa.fa-youtube:hover,.fa.fa-group:hover{
+	color: #cc0000;
+}
+
 #znacke{
 	margin-left: 15%;
 }
