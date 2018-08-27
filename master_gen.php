@@ -12,17 +12,23 @@ table.gsc-search-box td {
 }
 
 #opis {
-	width:45%;
-	padding-left: 30px; 
+	width:90%;
+	font-weight: 400;	
 	text-align:justify;
-	margin-bottom: -30px;
+	
 }
+
+.active{
+	color: #cc0000;
+}
+/*
 #znacke {
 	margin-top: 3%;
 	width: 45%;
 	float: left;
 	margin-bottom: 5%
 }
+
 
 #postopek {
 	margin-top: -42px;
@@ -34,7 +40,7 @@ table.gsc-search-box td {
 	min-width: 500px;
 	position: relative;
 	font-weight: bold;
-}
+}*/
 .in {
 	margin-right: 20px;
 	width: 20px;
@@ -47,10 +53,10 @@ table.gsc-search-box td {
 	text-align: left;
 	padding-top:1px;
 }
-
+/*
 #move2 {
 	width: 50%;
-}
+}*/
 
 .white {
 	background-color: white;
@@ -98,12 +104,75 @@ table.gsc-search-box td {
 @media only screen and (min-width: 768px){
 	#droptine-div{
 		font-size: 24px;
+	}	
+
+	#znacke{
+		margin-left: 45%;
 	}
+
 }
 
 .droptine:hover{
 	color: #cc0000;
 }
+
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+@media only screen and (min-width: 1024px){
+	
+	.videoWrapper iframe {
+		left: 5%;
+		top: 5%;
+		width: 90%;
+		height: 90%;
+	}
+}
+
+@media only screen and (min-width: 1200px){
+	.videoWrapper iframe {
+		left: 9%;
+		top: 9%;
+		width: 70%;
+		height: 70%;
+	}
+}
+
+.fa-phone-square:before{
+	color: green;
+}
+
+.fa-info-circle:before{
+	color: 	#FFD700;
+}
+
+.fa-play:before{
+	color: 	#00BFFF;
+}
+
+#znacke{
+	margin-left: 15%;
+}
+
+.link-znacke{
+	font-weight: 600;
+}
+
+.link-znacke:hover{
+	color: #cc0000;
+}
+
 
 }
 
@@ -276,7 +345,7 @@ function showbreadcrumbs($conn) {
 			</div>
 			<span>/ </span>
 			<div class="mb-2">
-			<a class="droptine" href="index.php?id='.$firstLevel.'">
+			<a class="droptine active" href="index.php?id='.$firstLevel.'">
 			
 			<p  style="margin-left: 3px;"> <b>%s</b></p>
 			 </a>  
@@ -319,7 +388,7 @@ function showbreadcrumbs($conn) {
 			</div>
 			<span >/ </span>
 			<div class="mb-2">
-			<a class="droptine" href="index.php?idk=%s">
+			<a class="droptine active" href="index.php?idk=%s">
 			
 			<p style="margin-left: 3px;"><b>%s</b></p>
 			 </a>  
@@ -371,9 +440,9 @@ function showbreadcrumbs($conn) {
 			</div>
 			<span >/ </span>
 			<div class="mb-2">
-			<a>
+			<a class="droptine">
 			
-			<p style="margin-left: 3px;"><b>%s</b></p>
+			<p class="active" style="margin-left: 3px;">%s</p>
 			 </a>  
 			</div>      
 			</div>
@@ -619,33 +688,33 @@ function ShowLast($conn, $idt) {
 	$result = mysqli_query($conn,$sql);
 	$info = $result->fetch_array(MYSQLI_ASSOC);
 	
-	echo "<div style='background-color:white; padding-left: 10px;'>";
+	echo "<div style='background-color: rgba(255,255,255,0.8); padding-left: 10px;'>";
 	echo "<div style='margin-bottom:40px; margin-top: 30px;'><h1>". $info['ime_tematike'] . "</h1></div>";
 
 	$opis = $info['opis'];  
-	echo "<div id='opis'>".$opis."</div><br>";
-	echo "<div id='znacke'>";
+	echo "<div class='row'><div class='col-sm-6 ml-3 pl-3' id='opis' >".$opis;
+	echo "<div class='text-left mt-3 pt-3 mb-3 pb-3' id='znacke'>";
 	$tel = $info['tel'];
 	if ($tel != '0') {
-		printf("<p><span id='move2'><i class='fa fa-phone-square fa-2x mb-1 in' aria-hidden='true'></i></span><span id='move'><a href='tel:%s'> %s</a></span></p>",$tel, $tel);
+		printf("<p><span ><i class='fa fa-phone-square fa-2x mb-1 in' aria-hidden='true'></i></span><span ><a class='link-znacke' href='tel:%s'> %s</a></span></p>",$tel, $tel);
 	}
 	$potrdilo = $info['digitalno_potrdilo'];
 	if ($potrdilo == '1') {
 
-		printf("<p><span id='move2'><i class='fa fa-certificate fa-2x mb-1 in' aria-hidden='true'></i></span><a id='move' href='https://www.sigen-ca.si/'> Potrebujete digitalno potrdilo</a></p>");
+		printf("<p><span><i class='fa fa-id-badge fa-2x mb-1 in' aria-hidden='true'></i></span><a class='link-znacke'  href='https://www.sigen-ca.si/'> Potrebujete digitalno potrdilo</a></p>");
 	}
 	if ($info['Page-link'] != "") { 
-		printf("<p><span id='move2'><i class='fa fa-info-circle fa-2x mb-1 in' aria-hidden='true'></i></span> <a id='move' href='%s'> Več informacij</a></p>", $info['Page-link']);
+		printf("<p><span ><i class='fa fa-info-circle fa-2x mb-1 in' aria-hidden='true'></i></span> <a class='link-znacke' href='%s'> Več informacij</a></p>", $info['Page-link']);
 	}
 	if ($info['info-link']){
-		printf("<p><span id='move2'><i class='fa fa-play fa-2x mb-1 in' aria-hidden='true'></i></span><a  id='move'href='%s'> Začni postopek</a></p>", $info['info-link']);
+		printf("<p><span ><i class='fa fa-play fa-2x mb-1 in' aria-hidden='true'></i></span><a class='link-znacke'  href='%s'> Začni postopek</a></p>", $info['info-link']);
 	}
-	echo "</div>";
+	echo "</div></div>";
 	if ($info['video_link'] != "") {
 		$video_link = str_replace("watch?v=", "embed/", $info['video_link']);
 		$video_link = str_replace("&feature=youtu.be", "", $video_link);
 		printf("
-			<div id='postopek'><span id='text'>Postopek:</span><iframe width='550' height='400' src='%s'frameborder='0' allowfullscreen></iframe></div>", $video_link);
+			<div class='col-sm-6 pr-4 pb-4 pl-4' id='postopek'><div class='videoWrapper'><iframe width='373' height='232' src='%s'frameborder='0' allowfullscreen></iframe></div></div></div>", $video_link);
 	}
 }
 ?>

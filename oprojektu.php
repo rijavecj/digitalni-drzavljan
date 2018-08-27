@@ -31,9 +31,7 @@
  height: 200px;
   background-size: cover;
  display: block;
- border-radius: 100px;
- -webkit-border-radius: 100px;
- -moz-border-radius: 100px;
+ 
 }
 .card:hover{
 	color: #cc0000;
@@ -72,7 +70,7 @@
       <h2 class="h1 text-center mb-5">O projektu</h2>
       <!--Section description-->
      
-      <p class="text-center mb-5 pb-5">Informacijska tehnologija je v večji meri danes gonilo moderne, t.i. 
+      <p class="text-center mb-3 pb-3">Informacijska tehnologija je v večji meri danes gonilo moderne, t.i. 
         Informacijske družbe, njena uporaba pa optimizira poslovanje, pohitri procese, zmanjšuje stroške in 
         obremenitve na okolje. Izredno pomembno vlogo igra tudi v javnem sektorju, kjer e-storitve olajšujejo
          poslovanje in interakcijo med državo, državljani in zasebnim sektorjem. Ključni izziv v vsemu temu pa
