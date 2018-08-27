@@ -692,7 +692,7 @@ function ShowLast($conn, $idt) {
 	echo "<div style='margin-bottom:40px; margin-top: 30px;'><h1>". $info['ime_tematike'] . "</h1></div>";
 
 	$opis = $info['opis'];  
-	echo "<div class='row'><div class='col-sm-6 ml-3 pl-3' id='opis' >".$opis;
+	echo "<div class='row'><div class='col-sm-6 pl-3' id='opis' >".$opis;
 	echo "<div class='text-left mt-3 pt-3 mb-3 pb-3' id='znacke'>";
 	$tel = $info['tel'];
 	if ($tel != '0') {
