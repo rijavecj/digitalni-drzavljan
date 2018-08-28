@@ -708,10 +708,10 @@ function ShowLast($conn, $idt) {
 		printf("<p><span><i class='fa fa-id-badge fa-2x mb-1 in' aria-hidden='true'></i></span><a class='link-znacke'  href='https://www.sigen-ca.si/'> Potrebujete digitalno potrdilo</a></p>");
 	}
 	if ($info['Page-link'] != "") { 
-		printf("<p><span ><i class='fa fa-info-circle fa-2x mb-1 in' aria-hidden='true'></i></span> <a class='link-znacke' href='%s'> Več informacij</a></p>", $info['Page-link']);
+		printf("<p><span ><i class='fa fa-info-circle fa-2x mb-1 in' aria-hidden='true'></i></span> <a class='link-znacke' href='%s'> Več informacij</a></p>", $info['info-link']);
 	}
 	if ($info['info-link']){
-		printf("<p><span ><i class='fa fa-play fa-2x mb-1 in' aria-hidden='true'></i></span><a class='link-znacke'  href='%s'> Začni postopek</a></p>", $info['info-link']);
+		printf("<p><span ><i class='fa fa-play fa-2x mb-1 in' aria-hidden='true'></i></span><a class='link-znacke'  href='%s'> Začni postopek</a></p>", $info['Page-link']);
 	}
 	echo "</div></div>";
 	if ($info['video_link'] != "") {
