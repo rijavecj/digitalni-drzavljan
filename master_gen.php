@@ -78,16 +78,25 @@ table.gsc-search-box td {
 
 
 .onas{
-	color: black;
-	font-size: 19px;
-	margin-left: 8px;
-	margin-bottom: 5px;
-	font-weight: bolder;
+	display: none;
+
+}
+
+@media only screen and (min-width: 360px){
+ .onas{
+		display: inline;
+		color: black;
+		font-size: 19px;
+		margin-left: 8px;
+		margin-bottom: 5px;
+		font-weight: bolder;
+ }
 }
 
 .change-color{	
 	color: #000;
-	font-size: 	
+	display: inline;
+	font-size: 32px;
 }
 
 .za-ds{
@@ -177,6 +186,66 @@ table.gsc-search-box td {
 	color: #cc0000;
 }
 
+.navbar-toggler{
+  display: none;
+}
+
+.logo-in-napis{
+	width: 100%;
+	
+}
+
+.logo-in-napis > img{
+	display: none;
+	height: 130px;
+	
+}
+
+
+
+@media only screen and (min-width: 482px){
+
+	
+	.change-color{
+		display: block;
+		
+	}
+
+	
+}
+
+@media only screen and (min-width: 615px){
+	.logo-in-napis > img{
+	display: block;
+	height: 130px;
+	
+}
+.logo-in-napis{
+	display: flex;
+   
+}
+.change-color{
+	padding-top: 27px;
+}
+}
+
+@media only screen and (min-width: 768px){
+
+.logo-in-napis{
+	justify-content: space-evenly;
+   
+}
+
+}
+
+@media only screen and (min-width: 992px){
+
+.logo-in-napis{
+	justify-content: flex-start;
+   
+}
+
+}
 
 }
 
@@ -205,21 +274,23 @@ function showNav () {
 			<nav class="navbar navbar-expand-lg navbar-light scrolling-navbar">
 				<div class="container">
 				<!-- Brand -->
-				<a class="navbar-item" href="index.php" >
+				
+				<a class="navbar-item logo-in-napis" href="index.php" >
 				<img src="img/logo.png" width="150px">
+				<h1 id="banner-tekst" style="color:black; Font-weight:bold;"><pid="naslov"><span class="change-color">DIGITALNI DRŽAVLJAN<br><span class="za-ds">za digitalno Slovenijo</span></span></h1>
 				</a>
 				<!-- Collapse -->
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-				aria-expanded="false" aria-label="Toggle navigation">
+				aria-expanded="true" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 				</button>
 
 				<!-- Links -->
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<div class="collapse navbar-collapse show" id="navbarSupportedContent">
 				<!-- Left -->
-				<ul class="navbar-nav mr-auto">
+				<!--<ul class="navbar-nav mr-auto">
 				<li><h1 id="banner-tekst" style="color:black; Font-weight:bold;"><pid="naslov"><span class="change-color">DIGITALNI DRŽAVLJAN<br><span class="za-ds">za digitalno Slovenijo</span></span></h1></li>
-				</ul>
+				</ul>-->
 				<!-- Right -->
 				</a>
 				</li> 
@@ -242,7 +313,7 @@ function showNav () {
 				<li class="nav-item">
 				<a href="oprojektu.php" class="nav-link border border-dark rounded"
 				target="_blank">
-				<nobr><i class="fa fa-group" aria-hidden="true"></i><span class="onas">O nas</nobr></span>
+				<nobr><i class="fa fa-group" aria-hidden="true"></i><span class="onas">O projektu</nobr></span>
 				</a>
 				</li>
 

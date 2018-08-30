@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>O nas</title>
+  <title>O projektu</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Bootstrap core CSS -->
@@ -37,39 +37,34 @@
 	color: #cc0000;
 }
 
+.white-transparent-panel{
+    background-color: rgba(255, 255, 255, 0.5);
+    
+}
+
 </style>
 </head>
   <!-- Navbar -->
 
+<?php
+   include 'master_gen.php';
+   include 'dbh.inc.php'; 
+   showHeader($conn);
+   showNav(); 
+?> 
+
 
   <!--Section-->
-  <div class="container">   
-     <hr>
-     <div class="row mb-3 wow fadeIn">
-     <div class="mb-2">
-            <a href="index.php">
-            <div class="card">
-
-                <div class="card-body">
-                    <!--Title-->
-                    <h4 class="card-title">Domov</h4>
-                    <!--Text-->
-               </div>
-            </div> </a>
-            <!--/.Card-->
-        </div>  
-     
-             </div>
-
-<hr>
-<section class="pt-5">
+ 
+  
+<div class="pt-3 ml-2 pl-2 mr-2 pr-2 white-transparent-panel">
 
   <!-- Heading & Description -->
   <div class="wow fadeIn">
       <!--Section heading-->
-      <h2 class="h1 text-center mb-5">O projektu</h2>
+      <h2 class="h1 text-center mb-2">O projektu</h2>
       <!--Section description-->
-     
+      <div class="container">
       <p class="text-center mb-3 pb-3">Informacijska tehnologija je v večji meri danes gonilo moderne, t.i. 
         Informacijske družbe, njena uporaba pa optimizira poslovanje, pohitri procese, zmanjšuje stroške in 
         obremenitve na okolje. Izredno pomembno vlogo igra tudi v javnem sektorju, kjer e-storitve olajšujejo
@@ -78,12 +73,25 @@
           digitalnih veščin državljanov in izvesti aktivnosti, osredotočene na veščine za uporabo e-storitev javnega 
           sektorja, predvsem e-zdravja, e-davkov in e-uprave.</p>
 
-          <p class="text-center mb-5 pb-5">Spletna stran „Digitalni državljan“ torej predstavlja enotno 
+          <p class="text-center mb-3 pb-3">Spletna stran „Digitalni državljan“ torej predstavlja enotno 
             usmerjevalno točko na obstoječe storitve javnega sektorja ter hkrati ponuja tudi učne vsebine
              za uporabo le teh v digitalni multimedijski obliki. Ob enem pa v sklopu projekta pripravljamo
               tudi izobraževanja za neposredno usposabljanje v učilnicah (šole in delavnice za odrasle) 
               v sodelovanju s Simbiozo.
         </p>
+        </div>
+        
+        <div class="mb-4 pb-4">
+
+            <h2 class="h1 text-center mb-3 pt-3">Pripravili smo</h2>
+
+            <a class="text-center " href=""><p>Priročnik za odrasle (klikni za prenos)</p></a>
+
+            <a class="text-center" href=""><p>Učna ura 1 (klikni za prenos)</p></a>
+
+            <a class="text-center" href=""><p>Učna ura 2 (klikni za prenos)</p></a>
+
+        </div>
 
         <h2 class="h1 text-center mb-5">Kdo smo</h2>
   </div>
@@ -95,6 +103,7 @@
 
   <hr class="mb-5">
 
+    <div class="container">
   <!--Grid row-->
   <div class="row mt-3 wow fadeIn">
 
@@ -119,7 +128,28 @@
 
   </div>
   <!--Grid row-->
+  <div class="row mt-3 wow fadeIn">
 
+<!--Grid column-->
+<div class="col-lg-5 col-xl-4 mb-4">
+    <!--Featured image-->
+    <div >
+        <img src="img/Anja.jpg" class="img-circle" alt="">
+        
+    </div>
+</div>
+<!--Grid column-->
+
+<!--Grid column-->
+<div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">
+    <h3 class="mb-3 font-weight-bold dark-grey-text">
+        <strong>Anja Gabrovec, Uprava</strong>
+    </h3>
+    
+</div>
+<!--Grid column-->
+
+</div>
 
 
   <!--Grid row-->
@@ -190,28 +220,31 @@
 
   </div>
 
-  <div class="row mt-3 wow fadeIn">
+ 
 
-      <!--Grid column-->
-      <div class="col-lg-5 col-xl-4 mb-4">
-          <!--Featured image-->
-          <div >
-              <img src="img/Anja.jpg" class="img-circle" alt="">
-              
-          </div>
-      </div>
-      <!--Grid column-->
 
-      <!--Grid column-->
-      <div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">
-          <h3 class="mb-3 font-weight-bold dark-grey-text">
-              <strong>Anja Gabrovec, Uprava</strong>
-          </h3>
-          
-      </div>
-      <!--Grid column-->
+    <div class="row mt-3 wow fadeIn">
 
-  </div>
+        <!--Grid column-->
+        <div class="col-lg-5 col-xl-4 mb-4">
+            <!--Featured image-->
+            <div >
+                <img src="img/Wojcicki.jpg" class="img-circle" alt="">
+                
+            </div>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">
+            <h3 class="mb-3 font-weight-bold dark-grey-text">
+                <strong>Nina Wojčicki, Marketing</strong>
+            </h3>
+            
+        </div>
+        <!--Grid column-->
+
+    </div>
 
 
     <div class="row mt-3 wow fadeIn">
@@ -237,28 +270,6 @@
 
     </div>
 
-    <div class="row mt-3 wow fadeIn">
-
-        <!--Grid column-->
-        <div class="col-lg-5 col-xl-4 mb-4">
-            <!--Featured image-->
-            <div >
-                <img src="img/Wojcicki.jpg" class="img-circle" alt="">
-                
-            </div>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">
-            <h3 class="mb-3 font-weight-bold dark-grey-text">
-                <strong>Nina Wojčicki, Marketing</strong>
-            </h3>
-            
-        </div>
-        <!--Grid column-->
-
-    </div>
   </div>
   <!--Grid row-->
 
@@ -267,7 +278,7 @@
  
   <!--Pagination-->
 
-</section>
+</div>
 
 
 
@@ -279,11 +290,7 @@
 
 
     
-    </div>
- 
-       
-  </main>
-  <!--Main layout-->
+
 
   <!--Footer-->
   <footer class="page-footer text-center font-small style="padding-top:200px;">
