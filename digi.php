@@ -9,6 +9,8 @@ showNav();
 <!doctype html>
 <html>
 <head>
+
+	<title>E-uprava</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +19,7 @@ showNav();
 	<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/1.0.1/svg.min.js"></script>
 	<script src="dist/flowsvg.min.js"></script>
-
+	
 	<style>
 	a:hover {
 		text-decoration:underline;
@@ -28,7 +30,6 @@ showNav();
 	}
 </style>
 
-<title>E-uprava</title>
 </head>
 <body>
 	<div style="margin-top:150px;">
