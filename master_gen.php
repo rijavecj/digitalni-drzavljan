@@ -139,6 +139,14 @@ table.gsc-search-box td {
 	height: 100%;
 }
 
+.videoWrapper img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
 @media only screen and (min-width: 1024px){
 	
 	.videoWrapper iframe {
@@ -147,6 +155,14 @@ table.gsc-search-box td {
 		width: 90%;
 		height: 90%;
 	}
+
+	.videoWrapper img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 85%;
+	height: 85%;
+}
 }
 
 @media only screen and (min-width: 1200px){
@@ -790,6 +806,9 @@ function ShowLast($conn, $idt) {
 		$video_link = str_replace("&feature=youtu.be", "", $video_link);
 		printf("
 			<div class='col-sm-6 pr-4 pb-4 pl-4' id='postopek'><div class='videoWrapper'><iframe width='373' height='232' src='%s'frameborder='0' allowfullscreen></iframe></div></div></div>", $video_link);
+	} else {
+		printf("
+			<div class='col-sm-6 pr-4 pb-4 pl-4' id='postopek'><div class='videoWrapper'><img class='img-fluid' src='img/video-tb.jpg'  width='373' height='232' ></div></div></div>");
 	}
 }
 ?>
